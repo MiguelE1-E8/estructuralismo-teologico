@@ -1,0 +1,179 @@
+info: estructuralismo-teologico: no previous manifest, creating one from scratch
+info: toolchain not updated; already up-to-date
+✔ [2/29] Built E2
+✔ [3/29] Built E0
+ℹ [4/29] Built E2Nicea
+info: lean/E2Nicea.lean:271:0: 'E2Nicea.ley_fuerte' depends on axioms: [propext]
+info: lean/E2Nicea.lean:272:0: 'E2Nicea.ley_debil' depends on axioms: [propext]
+info: lean/E2Nicea.lean:273:0: 'E2Nicea.re_nicea' depends on axioms: [propext]
+info: lean/E2Nicea.lean:274:0: 'E2Nicea.nicea_extiende' depends on axioms: [propext]
+info: lean/E2Nicea.lean:275:0: 'E2Nicea.distincion_posterior' depends on axioms: [propext]
+info: lean/E2Nicea.lean:276:0: 'E2Nicea.retro_sentido' depends on axioms: [propext]
+info: lean/E2Nicea.lean:277:0: 'E2Nicea.retro_no_ley' depends on axioms: [propext]
+info: lean/E2Nicea.lean:278:0: 'E2Nicea.retroStar_no_RE' depends on axioms: [propext]
+info: lean/E2Nicea.lean:279:0: 'E2Nicea.L3_para_E3' depends on axioms: [propext]
+info: lean/E2Nicea.lean:280:0: 'E2Nicea.compat_antitona' does not depend on any axioms
+⚠ [5/29] Built E1
+warning: lean/E1.lean:155:6: unused variable `u`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: lean/E1.lean:155:8: unused variable `v`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+info: lean/E1.lean:588:0: 'E1.Pruebas.y4ok_Ax' does not depend on any axioms
+info: lean/E1.lean:589:0: 'E1.Pruebas.y4vacio_no_Ax' does not depend on any axioms
+info: lean/E1.lean:590:0: 'E1.Pruebas.edicion_ya_no_entra' does not depend on any axioms
+info: lean/E1.lean:591:0: 'E1.Pruebas.ok_compatible' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: lean/E1.lean:592:0: 'E1.Pruebas.bad_incompatible' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: lean/E1.lean:593:0: 'E1.Pruebas.bad_compatible_con_discreta' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: lean/E1.lean:594:0: 'E1.Pruebas.sector_de_cartas' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: lean/E1.lean:595:0: 'E1.Pruebas.comparables' does not depend on any axioms
+info: lean/E1.lean:596:0: 'E1.compatible_iff_fino' depends on axioms: [propext, Quot.sound]
+info: lean/E1.lean:597:0: 'E1.compat_trivial_si_discreta' does not depend on any axioms
+info: lean/E1.lean:598:0: 'E1.needed_partition' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: lean/E1.lean:599:0: 'E1.Pruebas.pBad_no_extiende' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: lean/E1.lean:600:0: 'E1.Pruebas.pOk_extiende' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: lean/E1.lean:601:0: 'E1.extiende_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: lean/E1.lean:602:0: 'E1.parcial_extiende' does not depend on any axioms
+⚠ [6/29] Built E3
+warning: lean/E3.lean:518:43: This simp argument is unused:
+  B
+
+Hint: Omit it from the simp argument list.
+  simp ̵[̵B̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/E3.lean:519:43: This simp argument is unused:
+  B
+
+Hint: Omit it from the simp argument list.
+  simp ̵[̵B̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/E3.lean:599:46: This simp argument is unused:
+  B
+
+Hint: Omit it from the simp argument list.
+  simp ̵[̵B̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/E3.lean:621:22: This simp argument is unused:
+  h2
+
+Hint: Omit it from the simp argument list.
+  simp [hc,̵ ̵h̵2̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/E3.lean:660:33: This simp argument is unused:
+  B
+
+Hint: Omit it from the simp argument list.
+  simp ̵[̵B̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+warning: lean/E3.lean:664:33: This simp argument is unused:
+  B
+
+Hint: Omit it from the simp argument list.
+  simp ̵[̵B̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+ℹ [7/29] Built E3Nicea
+info: lean/E3Nicea.lean:331:0: 'E3.Hist.dos_tipos_de_choque' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: lean/E3Nicea.lean:332:0: 'E3.Hist.negativos' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: lean/E3Nicea.lean:333:0: 'E3.NiceaE3_ley' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: lean/E3Nicea.lean:334:0: 'E3.Hist.E3_no_determinada_por_E2' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [8/29] Built E4
+warning: lean/E4.lean:512:20: `Fin.ofNat'` has been deprecated: use `Fin.ofNat` instead
+warning: lean/E4.lean:514:27: `Fin.ofNat'` has been deprecated: use `Fin.ofNat` instead
+warning: lean/E4.lean:523:16: `Fin.ofNat'` has been deprecated: use `Fin.ofNat` instead
+warning: lean/E4.lean:650:20: `Fin.ofNat'` has been deprecated: use `Fin.ofNat` instead
+warning: lean/E4.lean:652:27: `Fin.ofNat'` has been deprecated: use `Fin.ofNat` instead
+warning: lean/E4.lean:661:16: `Fin.ofNat'` has been deprecated: use `Fin.ofNat` instead
+✔ [9/29] Built E5
+✔ [10/29] Built E6
+✔ [11/29] Built E7
+✔ [12/29] Built E8
+✔ [13/29] Built Ciclo
+✔ [14/29] Built CicloNicea
+✔ [15/29] Built CicloPaso
+✔ [16/29] Built CicloRetornos
+⚠ [17/29] Built CicloRetornosB
+warning: lean/CicloRetornosB.lean:230:13: unused variable `p`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: lean/CicloRetornosB.lean:230:15: unused variable `x`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: lean/CicloRetornosB.lean:230:17: unused variable `h`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: lean/CicloRetornosB.lean:347:66: This simp argument is unused:
+  E3.X
+
+Hint: Omit it from the simp argument list.
+  simp ̵[̵E̵3̵.̵X̵]̵
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+info: lean/CicloRetornosB.lean:359:0: 'CicloB.ExtE1.res_iff' does not depend on any axioms
+info: lean/CicloRetornosB.lean:360:0: 'CicloB.yMalD_no_ext' depends on axioms: [propext]
+info: lean/CicloRetornosB.lean:361:0: 'CicloB.pideE3N' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: lean/CicloRetornosB.lean:362:0: 'CicloB.pideE2N' depends on axioms: [propext]
+info: lean/CicloRetornosB.lean:363:0: 'CicloB.ClasifE4.heuristica' does not depend on any axioms
+info: lean/CicloRetornosB.lean:364:0: 'CicloB.clasifE3N' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: lean/CicloRetornosB.lean:365:0: 'CicloB.contexto_de_L3' does not depend on any axioms
+info: lean/CicloRetornosB.lean:366:0: 'CicloB.Xa_ref_libre' depends on axioms: [propext]
+info: lean/CicloRetornosB.lean:367:0: 'CicloB.cambiar_a_cambia_C2' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: lean/CicloRetornosB.lean:368:0: 'CicloB.mpdN_debil' depends on axioms: [propext, Quot.sound]
+info: lean/CicloRetornosB.lean:369:0: 'CicloB.comp_creciente_excluida' depends on axioms: [propext]
+ℹ [18/29] Built CicloF2
+info: lean/CicloF2.lean:202:0: 'Ciclo.clasificacion' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: lean/CicloF2.lean:203:0: 'Ciclo.ledger' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: lean/CicloF2.lean:204:0: 'Ciclo.camino_minima' does not depend on any axioms
+ℹ [19/29] Built CicloModelo
+info: lean/CicloModelo.lean:112:0: 'Ciclo.Modelo.nicea' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: lean/CicloModelo.lean:113:0: 'Ciclo.Modelo.unidad' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: lean/CicloModelo.lean:114:0: 'Ciclo.Modelo.nicea_activo' depends on axioms: [propext, Classical.choice, Quot.sound]
+⚠ [20/29] Built CicloF4
+warning: lean/CicloF4.lean:80:8: unused variable `a`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+warning: lean/CicloF4.lean:80:10: unused variable `b`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+info: lean/CicloF4.lean:157:0: 'Ciclo.creativa_ida' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: lean/CicloF4.lean:158:0: 'Ciclo.critica_vuelta' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: lean/CicloF4.lean:159:0: 'Ciclo.paso_depende_de_E4' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: lean/CicloF4.lean:160:0: 'Ciclo.giro_dialectico' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: lean/CicloF4.lean:161:0: 'Ciclo.Est.cadena' depends on axioms: [propext]
+info: lean/CicloF4.lean:162:0: 'Ciclo.giro_dialectico_cadena' depends on axioms: [propext, Classical.choice, Quot.sound]
+✔ [21/29] Built CicloF4b
+✔ [22/29] Built CicloF5a
+✔ [23/29] Built CicloF5
+⚠ [24/29] Built CicloF6
+warning: lean/CicloF6.lean:25:13: unused variable `p`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+✔ [25/29] Built CicloCaso
+⚠ [26/29] Built CicloEnlaces
+warning: lean/CicloEnlaces.lean:70:19: unused variable `w`
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+info: lean/CicloEnlaces.lean:164:0: 'Ciclo.conservativa' depends on axioms: [propext]
+info: lean/CicloEnlaces.lean:165:0: 'Ciclo.sin_nuevas_restricciones' depends on axioms: [propext]
+info: lean/CicloEnlaces.lean:166:0: 'Ciclo.fase1_abierta' depends on axioms: [propext]
+info: lean/CicloEnlaces.lean:167:0: 'Ciclo.hzNicea' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: lean/CicloEnlaces.lean:168:0: 'Ciclo.hz_mal_excluido' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: lean/CicloEnlaces.lean:169:0: 'Ciclo.lug_decision' depends on axioms: [propext, Classical.choice, Quot.sound]
+ℹ [27/29] Built CicloDeclive
+info: lean/CicloDeclive.lean:177:0: 'Ciclo.Declive.declina_decrece' depends on axioms: [propext, Quot.sound]
+info: lean/CicloDeclive.lean:178:0: 'Ciclo.Declive.itera_cota' depends on axioms: [propext, Quot.sound]
+info: lean/CicloDeclive.lean:179:0: 'Ciclo.Declive.declive_total' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: lean/CicloDeclive.lean:180:0: 'Ciclo.Declive.puente_nicea' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: lean/CicloDeclive.lean:181:0: 'Ciclo.Declive.sin_sesgo_no_declina' does not depend on any axioms
+ℹ [28/29] Built CicloSub012
+info: lean/CicloSub012.lean:111:0: 'Ciclo.E2_subdeterminada' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: lean/CicloSub012.lean:112:0: 'Ciclo.E1_subdeterminada' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: lean/CicloSub012.lean:113:0: 'Ciclo.E0_subdeterminada' depends on axioms: [propext, Classical.choice, Quot.sound]
+info: lean/CicloSub012.lean:114:0: 'Ciclo.U7_E0_E2' depends on axioms: [propext, Classical.choice, Quot.sound]
+Build completed successfully.

@@ -1,0 +1,13 @@
+cff-version: 1.2.0
+message: "Si usa este trabajo, cítelo así."
+title: "Estructuralismo teológico: modelación en Lean 4 de las especializaciones funcionales de Lonergan"
+type: software
+authors:
+  - family-names: "Vega Ochoa"
+    given-names: "Miguel Angel"
+    affiliation: "Pontificia Universidad Javeriana"
+    orcid: "https://orcid.org/0009-0006-3898-8757"
+license: Apache-2.0
+repository-code: "https://github.com/MiguelE1-E8/estructuralismo-teologico"
+version: 0.1.0
+date-released: "2026-10-23"

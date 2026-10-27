@@ -1,0 +1,3 @@
+teoremas revisados: 1843
+con sorryAx: 0
+axiomas distintos: [propext, Classical.choice, Quot.sound]

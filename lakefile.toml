@@ -1,0 +1,7 @@
+name = "estructuralismo-teologico"
+defaultTargets = ["Ciclo"]
+
+[[lean_lib]]
+name = "Ciclo"
+srcDir = "lean"
+roots = ["E0","E1","E2","E2Nicea","E3","E3Nicea","E4","E5","E6","E7","E8","Ciclo","CicloNicea","CicloPaso","CicloRetornos","CicloRetornosB","CicloF2","CicloModelo","CicloF4","CicloF4b","CicloF5a","CicloF5","CicloF6","CicloCaso","CicloEnlaces","CicloDeclive","CicloSub012"]
