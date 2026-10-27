@@ -7,6 +7,7 @@ y los módulos `Ciclo*` que enlazan las etapas.
 ## Contenido
 - `lean/` — E0–E8, `E2Nicea`, `E3Nicea` y los módulos `Ciclo*`.
 - `tools/Axioms.lean` — auditoría de axiomas de todos los teoremas.
+- `mapas/` — mapa técnico y mapa para lectores del ciclo, con el grafo en CSV y GraphML.
 - `resultados/` — salida guardada de `lake build` y de la auditoría (Lean 4.22.0).
 
 ## Cómo comprobarlo
