@@ -1,0 +1,313 @@
+<title>Mapa de las ocho especializaciones</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap">
+<style>
+/* Layout: lectura guiada. Un recorrido en serpiente de las ocho especializaciones, detalle en lenguaje llano debajo y la lista de conexiones con voto al final. */
+:root{
+  --bg:#F3F4F1; --surface:#FFFFFF; --fg:#1B2229; --muted:#59646E; --line:#D6DAD5;
+  --a:#1D6A73; --a-bg:#DAEDEF; --b:#6A3F7E; --b-bg:#EADFF0;
+  --cadena:#26406F; --vuelta:#0B7A5A; --anade:#6D7884; --pend:#A55F00;
+  --ok:#1F6B3A; --bad:#A33A2A; --focus:#26406F;
+  --f-display:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --f-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#12171B; --surface:#1B2227; --fg:#E8ECEF; --muted:#9CA7B1; --line:#2F3A43;
+    --a:#69C3CC; --a-bg:#17383D; --b:#C79BDB; --b-bg:#33223D;
+    --cadena:#8BAAEA; --vuelta:#5FD0AE; --anade:#9CA7B2; --pend:#E2A24C;
+    --ok:#7CCB9A; --bad:#EE9A8B; --focus:#8BAAEA;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#12171B; --surface:#1B2227; --fg:#E8ECEF; --muted:#9CA7B1; --line:#2F3A43;
+  --a:#69C3CC; --a-bg:#17383D; --b:#C79BDB; --b-bg:#33223D;
+  --cadena:#8BAAEA; --vuelta:#5FD0AE; --anade:#9CA7B2; --pend:#E2A24C;
+  --ok:#7CCB9A; --bad:#EE9A8B; --focus:#8BAAEA;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:16px;line-height:1.6;
+  padding-block:24px 44px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:20px}
+h1{font-family:var(--f-display);font-weight:600;font-size:clamp(28px,6vw,38px);line-height:1.1;margin:0 0 10px;text-wrap:balance}
+.lede{margin:0 0 8px;max-width:60ch}
+.lede.sub{color:var(--muted);font-size:15px}
+.filters{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font:inherit;font-size:14px;display:inline-flex;align-items:center;gap:8px;padding:7px 13px;border:1px solid var(--line);background:var(--surface);color:var(--fg);border-radius:999px;cursor:pointer}
+.chip[aria-pressed="false"]{color:var(--muted);background:transparent}
+.chip svg{width:28px;height:8px;flex:none}
+.chip:focus-visible,.vbtn:focus-visible,.card:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.diagram{background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow-x:auto}
+.diagram svg{display:block;width:100%;min-width:600px;height:auto}
+.phase{font-family:var(--f-mono);font-size:12px;letter-spacing:.05em;text-transform:uppercase;fill:var(--muted)}
+.edge .hit{fill:none;stroke:transparent;stroke-width:16;pointer-events:stroke;cursor:pointer}
+.edge .ln{fill:none;stroke-linecap:round;transition:opacity .15s}
+.edge.tC .ln{stroke:var(--cadena);stroke-width:2.6}
+.edge.tV .ln{stroke:var(--vuelta);stroke-width:2.2;stroke-dasharray:9 3 2 3}
+.edge.tA .ln{stroke:var(--anade);stroke-width:1.5}
+.edge.tP .ln{stroke:var(--pend);stroke-width:1.8;stroke-dasharray:5 4}
+.edge.on .ln{stroke-width:3.6}
+.edge.dim{opacity:.13}
+.node{cursor:pointer}
+.node rect{stroke-width:1.3}
+.node.a rect{fill:var(--a-bg);stroke:var(--a)}
+.node.b rect{fill:var(--b-bg);stroke:var(--b)}
+.node.sel rect{stroke-width:3.2}
+.node .nn{font-family:var(--f-mono);font-size:12px;fill:var(--muted)}
+.node .nt{font-family:var(--f-body);font-weight:500;font-size:15px;fill:var(--fg)}
+.node:focus-visible rect{stroke:var(--focus);stroke-width:3.2}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 18px;min-height:120px}
+.panel h2{font-family:var(--f-display);font-size:22px;font-weight:600;margin:2px 0 6px}
+.panel p{margin:6px 0;max-width:62ch}
+.k{font-family:var(--f-mono);font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.small{font-size:14px;color:var(--muted)}
+.tag{display:inline-block;font-size:13px;padding:2px 9px;border-radius:999px;border:1px solid var(--line);color:var(--muted);margin-right:6px}
+.tag.C{color:var(--cadena);border-color:var(--cadena)}
+.tag.V{color:var(--vuelta);border-color:var(--vuelta)}
+.tag.A{color:var(--anade);border-color:var(--anade)}
+.tag.P{color:var(--pend);border-color:var(--pend)}
+.tag.prov{border-style:dashed}
+.list{display:flex;flex-direction:column;gap:10px}
+details.est{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 16px}
+details.est summary{cursor:pointer;font-family:var(--f-display);font-size:19px;font-weight:600}
+details.est ul{margin:10px 0 0;padding-left:18px;display:flex;flex-direction:column;gap:8px}
+details.est li{max-width:62ch}
+.list-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+.list-head h2{font-family:var(--f-display);font-size:22px;font-weight:600;margin:0}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:13px 15px;display:grid;gap:7px;cursor:pointer}
+.card.on{border-color:var(--fg)}
+.card .top{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px}
+.card .id{font-weight:600;margin-right:4px}
+.card .why{margin:0;min-width:0}
+.votes{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.vlabel{font-size:13px;color:var(--muted)}
+.vbtn{font:inherit;font-size:14px;padding:6px 12px;border-radius:6px;border:1px solid var(--line);background:transparent;color:var(--fg);cursor:pointer}
+.vbtn[aria-pressed="true"].u{border-color:var(--ok);color:var(--ok);background:color-mix(in srgb,var(--ok) 12%,transparent)}
+.vbtn[aria-pressed="true"].e{border-color:var(--bad);color:var(--bad);background:color-mix(in srgb,var(--bad) 12%,transparent)}
+.vbtn:disabled{opacity:.5;cursor:default}
+.msg{font-size:14px;color:var(--bad);margin:0}
+.empty{color:var(--muted);padding:14px;border:1px dashed var(--line);border-radius:8px}
+.foot{font-size:14px;color:var(--muted);border-top:1px solid var(--line);padding-top:14px;max-width:64ch;margin:0}
+[hidden]{display:none!important}
+@media (prefers-reduced-motion:reduce){.edge .ln{transition:none}}
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>Mapa de las ocho especializaciones</h1>
+    <p class="lede">La teología que describe Bernard Lonergan se hace en ocho tareas, una tras otra. Este mapa muestra ese recorrido, las vueltas que cada tarea hace hacia las anteriores y las demás conexiones que aparecieron al modelarlo con cuidado. Resultado: no es una cadena, es un ciclo que se cierra.</p>
+    <p class="lede sub">Toca una especialización o una flecha para ver qué significa.</p>
+  </header>
+
+  <div class="filters" role="group" aria-label="Qué conexiones mostrar">
+    <button class="chip" id="fC" aria-pressed="true"><svg viewBox="0 0 28 8" aria-hidden="true"><line x1="1" y1="4" x2="27" y2="4" stroke="var(--cadena)" stroke-width="2.8"/></svg>La cadena de siempre</button>
+    <button class="chip" id="fV" aria-pressed="true"><svg viewBox="0 0 28 8" aria-hidden="true"><line x1="1" y1="4" x2="27" y2="4" stroke="var(--vuelta)" stroke-width="2.4" stroke-dasharray="9 3 2 3"/></svg>Las vueltas</button>
+    <button class="chip" id="fA" aria-pressed="false"><svg viewBox="0 0 28 8" aria-hidden="true"><line x1="1" y1="4" x2="27" y2="4" stroke="var(--anade)" stroke-width="1.6"/></svg>Otras conexiones</button>
+    <button class="chip" id="fP" aria-pressed="false"><svg viewBox="0 0 28 8" aria-hidden="true"><line x1="1" y1="4" x2="27" y2="4" stroke="var(--pend)" stroke-width="1.9" stroke-dasharray="5 4"/></svg>Por confirmar</button>
+  </div>
+
+  <details class="est">
+    <summary>Qué se ha comprobado y qué no</summary>
+    <ul>
+      <li><b>Es un ciclo.</b> Con un programa de ordenador se comprobó que, siguiendo la cadena y las vueltas, se puede llegar desde cualquiera de las ocho tareas a cualquiera de las otras. No hay un salto directo de Comunicaciones a Investigación: se vuelve paso a paso, por ejemplo Comunicaciones → Sistematización → Doctrinas → Historia → Investigación.</li>
+      <li><b>Hace falta volver, pero no por todos los caminos.</b> Las vueltas de Comunicaciones a Sistematización y de Sistematización a Doctrinas son indispensables. De las dos vueltas que cruzan de la segunda mitad a la primera (de Doctrinas a Historia y de Fundamentos a Dialéctica) basta una, pero no pueden faltar las dos.</li>
+      <li><b>Las vueltas son posibilidades.</b> El modelo permite que una tarea devuelva algo a otra; no obliga a que lo haga. En el caso de Nicea sí se ejercen varias.</li>
+      <li><b>El conjunto avanza y puede retroceder.</b> Hay avances que solo suman material y avances que obligan a rehacer las doctrinas. También hay un declive con mecanismo, aunque sencillo.</li>
+      <li><b>Ninguna tarea se deduce de las otras.</b> Se comprobó que las reglas de cada tarea, con lo anterior, no fijan por sí solas el resultado de la siguiente. No se probó que cada una sea imprescindible.</li>
+      <li><b>Cuidado.</b> «Comprobado por ordenador» no equivale a «revisado por especialistas». El caso de Nicea es una ilustración con datos puestos por el modelo; por eso la afirmación pública sigue siendo prudente.</li>
+    </ul>
+  </details>
+
+  <div class="diagram"><svg id="svg" viewBox="0 0 700 392" role="img" aria-label="Las ocho especializaciones funcionales y sus conexiones"></svg></div>
+
+  <section class="panel" id="panel" aria-live="polite"></section>
+
+  <section class="list">
+    <div class="list-head"><h2>Las conexiones</h2><span class="small" id="voters"></span></div>
+    <p class="small" style="margin:0">Si tienes acceso para votar, di si cada conexión te ayuda a entender el conjunto.</p>
+    <p class="msg" id="msg" role="status"></p>
+    <div class="list" id="edges"></div>
+  </section>
+
+  <p class="foot">Este mapa es una reconstrucción hecha con herramientas formales. No todo lo que muestra lo afirma Lonergan con esas palabras: la cadena y las vueltas dentro de cada mitad siguen su texto; las demás conexiones son lo que el modelo hizo visible. Las ocho tareas están modeladas y se probó con un caso esquemático (Nicea, con datos puestos por el modelo). El único cierre que sigue siendo hipótesis es el externo: lo comunicado vuelve a la vida de las comunidades y de ahí salen datos nuevos.</p>
+</div>
+
+<script>
+const NODES={
+  Inv:{n:1,t:"Investigación",x:12,y:44,f:"a",ph:"Escuchar el pasado",q:"Reúne los datos que importan: textos, documentos, monumentos.",tech:"E0 y E1",est:"Modelada y comprobada con un caso, el concilio de Nicea. Los datos del caso están puestos con cuidado, pero son una ilustración, no una investigación histórica."},
+  Int:{n:2,t:"Interpretación",x:187,y:44,f:"a",ph:"Escuchar el pasado",q:"Comprende lo que cada autor quiso decir en su contexto.",tech:"E2",est:"Se lee con cuidado qué quisieron decir los autores. En el caso: el Símbolo de Nicea no distingue entre «ousía» e «hypóstasis»; Calcedonia sí. Leer Nicea con las ideas posteriores se rechaza."},
+  His:{n:3,t:"Historia",x:362,y:44,f:"a",ph:"Escuchar el pasado",q:"Reconstruye lo que ocurrió y cómo se movieron las comunidades y las ideas.",tech:"E3",est:"Se reconstruyen varias narraciones sobre Nicea; dos no pueden ser verdad a la vez, y esa disputa pasa a la Dialéctica. Incluye un proceso de decadencia (el Typos del año 648)."},
+  Dia:{n:4,t:"Dialéctica",x:537,y:44,f:"a",ph:"Escuchar el pasado",q:"Confronta las posiciones en conflicto y las saca a la luz.",tech:"E4",est:"Es la que más hace avanzar al conjunto. Si reclasifica una posición, hay que rehacer las doctrinas. También admite el declive: si todo se vuelve contraposición, las doctrinas pierden su apoyo."},
+  Fun:{n:5,t:"Fundamentos",x:537,y:254,f:"b",ph:"Hablar al presente",q:"Pone al descubierto el horizonte desde el cual se juzga: la conversión de quien hace teología.",tech:"E5",est:"Muestra cómo la conversión de las personas (o su ausencia) decide qué doctrinas se sostienen y cuándo empieza un declive."},
+  Doc:{n:6,t:"Doctrinas",x:362,y:254,f:"b",ph:"Hablar al presente",q:"Afirma lo que la comunidad cree y enseña.",tech:"E6",est:"Se rehacen después de cada giro de la Dialéctica. Es la tarea con más conexiones del conjunto."},
+  Sis:{n:7,t:"Sistematización",x:187,y:254,f:"b",ph:"Hablar al presente",q:"Busca comprender las doctrinas y ordenarlas con coherencia.",tech:"E7",est:"Solo las posiciones pasan a la comunicación. Queda abierta una correspondencia entre sus niveles de certeza y los de la Interpretación."},
+  Com:{n:8,t:"Comunicaciones",x:12,y:254,f:"b",ph:"Hablar al presente",q:"Lleva el mensaje a otras culturas, lenguajes y medios.",tech:"E8",est:"Se mide si el mensaje sigue fiel a la doctrina. Se decidió no identificar los lugares del pasado con los lugares de comunicación: son cosas distintas."}
+};
+const EDGES=[
+ {a:"Inv",b:"Int",t:"C",w:"Los datos reunidos son el material que la Interpretación se pone a comprender.",d:"M155 70 L184 70",s:""},
+ {a:"Int",b:"His",t:"C",w:"Lo comprendido en cada texto sirve para reconstruir lo que ocurrió.",d:"M330 70 L359 70",s:""},
+ {a:"His",b:"Dia",t:"C",w:"La historia entrega a la Dialéctica los movimientos y conflictos que debe confrontar.",d:"M505 70 L534 70",s:""},
+ {a:"Dia",b:"Fun",t:"C",w:"Los conflictos entre posiciones muestran qué conversión personal haría falta para resolverlos.",d:"M610 98 L610 251",s:""},
+ {a:"Fun",b:"Doc",t:"C",w:"Las doctrinas se afirman desde el horizonte que Fundamentos pone al descubierto.",d:"M534 274 L505 274",s:""},
+ {a:"Doc",b:"Sis",t:"C",w:"Lo que afirman las Doctrinas es lo que la Sistematización intenta comprender y ordenar.",d:"M359 274 L330 274",s:""},
+ {a:"Sis",b:"Com",t:"C",w:"Solo los sistemas que son posiciones llegan a las Comunicaciones, que los llevan a otras culturas y medios.",d:"M184 274 L155 274",s:""},
+ {a:"Com",b:"Sis",t:"V",w:"Al comunicar aparecen problemas que obligan a repensar la sistematización: ¿se entiende esto en otra cultura?",d:"M155 290 L184 290",s:"Lonergan lo afirma (p. 141)."},
+ {a:"Sis",b:"Doc",t:"V",w:"Las maneras de pensar que usa la sistematización se emplean luego al formular las doctrinas.",d:"M330 290 L359 290",s:"Lonergan lo afirma (p. 141)."},
+ {a:"Doc",b:"Fun",t:"V",w:"La conversión de la persona tiene también una dimensión doctrinal: lo que se enseña toca el horizonte desde el que se juzga.",d:"M505 290 L534 290",s:"Lonergan afirma la reciprocidad (p. 141); que lo que vuelve sea esto es lectura del modelo."},
+ {a:"Fun",b:"Dia",t:"V",w:"Los fundamentos sirven de criterio para escoger entre las posiciones en conflicto que deja la Dialéctica.",d:"M650 252 L650 98",s:"Lonergan lo afirma (pp. 141-142)."},
+ {a:"Doc",b:"His",t:"V",w:"Las doctrinas se entienden con su historia: de ahí vuelve información a la Historia.",d:"M450 252 L450 98",s:"Lonergan lo afirma (p. 142)."},
+ {a:"Int",b:"Inv",t:"V",w:"Lo que queda sin entender plantea preguntas nuevas: hace falta buscar más datos.",d:"M185 86 L155 86",s:"Lonergan lo afirma (p. 140). El modelo solo deja añadir datos o preguntas, nunca quitar lo ya reunido."},
+ {a:"His",b:"Inv",t:"V",w:"La historia suscita preguntas nuevas y puede ampliar el área en que se investiga.",d:"M390 96 L390 112 L82 112 L82 98",s:"Lonergan lo afirma (p. 140). El modelo solo deja añadir, nunca quitar."},
+ {a:"His",b:"Int",t:"V",w:"Saber dónde y cuándo escribió un autor cambia cómo se lee su texto.",d:"M360 86 L330 86",s:"Lonergan lo afirma (p. 140). Solo una parte está formalizada."},
+ {a:"Dia",b:"Int",t:"V",w:"La Dialéctica ayuda a ver desde qué horizonte lee cada intérprete.",d:"M560 44 L560 6 L225 6 L225 42",s:"Lonergan lo afirma (p. 140); el modelo lo formaliza como una clasificación parcial."},
+ {a:"Dia",b:"His",t:"V",w:"Y lo mismo con los puntos de vista de quienes reconstruyen la historia.",d:"M535 86 L505 86",s:"Lonergan lo afirma (p. 140); el modelo lo formaliza como una clasificación parcial."},
+ {a:"Inv",b:"His",t:"A",w:"La Historia también parte directamente de los datos reunidos, sin pasar por cada interpretación.",d:"M82 44 L82 18 L432 18 L432 42",s:""},
+ {a:"Int",b:"Dia",t:"A",w:"La Dialéctica confronta también las interpretaciones mismas, no solo los hechos.",d:"M257 44 L257 30 L607 30 L607 42",s:""},
+ {a:"Dia",b:"Doc",t:"A",w:"Las posiciones que deja la Dialéctica orientan qué doctrinas se pueden sostener.",d:"M590 98 L490 251",s:""},
+ {a:"Int",b:"Doc",t:"A",w:"Al formular una doctrina se retoma el contexto en que se interpretó cada texto. Se importa de forma parcial.",d:"M270 98 L380 251",s:""},
+ {a:"His",b:"Doc",t:"A",w:"Y también el contexto histórico en el que esa doctrina surgió.",d:"M415 98 L415 251",s:""},
+ {a:"Doc",b:"Com",t:"A",w:"Al comunicar, se mide si el mensaje sigue siendo fiel a la doctrina.",d:"M400 306 L400 338 L120 338 L120 308",s:""},
+ {a:"Fun",b:"Sis",t:"A",w:"Todo sistema parte de un horizonte, el que Fundamentos pone al descubierto. Solo es una posición sólida si ese horizonte es el de una persona convertida.",d:"M600 306 L600 322 L270 322 L270 308",s:""},
+ {a:"Fun",b:"Com",t:"A",w:"El horizonte de cada destinatario decide si puede recibir la doctrina de frente o si antes necesita un mensaje que lo prepare.",d:"M650 306 L650 354 L75 354 L75 308",s:""},
+ {a:"Dia",b:"Sis",t:"A",w:"Como la Dialéctica, la Sistematización distingue posiciones de contraposiciones. Solo las posiciones siguen adelante.",d:"M560 98 L310 252",s:""},
+ {a:"Int",b:"Sis",t:"A",w:"Cada doctrina conserva el grado de certeza que ya tenía. El sistema solo ofrece explicaciones probables y no añade certeza.",d:"M230 98 L230 251",s:"Queda abierto cómo se corresponden exactamente los niveles de certeza."},
+ {a:"His",b:"Fun",t:"A",w:"Cada punto de vista histórico puede ligarse con el horizonte que Fundamentos pone al descubierto.",d:"M490 98 L560 251",s:"Es una decisión del modelo, no algo que Lonergan diga con esas palabras."},
+ {a:"Int",b:"Fun",t:"P",w:"Comprender un texto también implica comprenderse a sí mismo. Hipótesis por precisar.",d:"M300 98 L545 255",s:""},
+ {a:"Inv",b:"Doc",t:"P",w:"Enlace por definir.",d:"M110 98 L350 255",s:""},
+ {a:"Com",b:"Inv",t:"P",w:"Cierre externo: lo comunicado entra en la vida de las comunidades y de ahí salen datos nuevos. Está fuera del modelo; no hay un salto directo de Comunicaciones a Investigación (el ciclo se cierra paso a paso por las vueltas).",d:"M45 251 L45 98",s:""},
+ {a:"Sis",b:"Dia",t:"P",w:"Lo sistematizado podría volver a la Dialéctica como material nuevo. Solo anotado.",d:"M325 254 L610 98",s:""},
+ {a:"Sis",b:"Inv",t:"P",w:"Lo sistematizado podría suscitar nuevas investigaciones. Solo anotado.",d:"M200 254 L95 99",s:""},
+ {a:"Dia",b:"Com",t:"P",w:"Al integrar las ciencias humanas se usa de nuevo la Dialéctica para depurarlas. Todavía sin enlace formal.",d:"M677 80 L692 80 L692 372 L30 372 L30 308",s:""}
+];
+EDGES.forEach(e=>{e.id=e.a+"-"+e.b});
+const TIPO={C:"Cadena de siempre",V:"Vuelta",A:"Otra conexión",P:"Por confirmar"};
+const ESTADO={C:"Ya formalizada en el modelo y comprobada con el caso.",V:"Formalizada como posibilidad: el modelo la permite, no obliga a que ocurra. Comprobada con el caso.",A:"Ya formalizada en el modelo.",P:"Es una hipótesis: el modelo todavía no la formaliza."};
+
+const st={sel:null,show:{C:true,V:true,A:false,P:false}};
+let tally={},mine={},voters=0,db=null,uid=null,busy=false;
+const $=id=>document.getElementById(id);
+const vis=e=>st.show[e.t];
+
+function renderSvg(){
+  const s=st.sel,on=new Set();
+  if(s&&s.k==="node")EDGES.forEach(e=>{if(e.a===s.id||e.b===s.id)on.add(e.id)});
+  if(s&&s.k==="edge")on.add(s.id);
+  let h='<defs><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>';
+  h+='<text class="phase" x="12" y="14" style="display:none"></text>';
+  EDGES.filter(vis).forEach(e=>{
+    const c=s?(on.has(e.id)?" on":" dim"):"";
+    h+='<g class="edge t'+e.t+c+'" data-edge="'+e.id+'"><path class="hit" d="'+e.d+'"/><path class="ln" d="'+e.d+'" marker-end="url(#ah)"/></g>';
+  });
+  for(const k in NODES){
+    const n=NODES[k],isSel=s&&s.k==="node"&&s.id===k;
+    h+='<g class="node '+n.f+(isSel?" sel":"")+'" data-node="'+k+'" tabindex="0" role="button" aria-label="'+n.n+'. '+n.t+'">'
+      +'<rect x="'+n.x+'" y="'+n.y+'" width="140" height="52" rx="7"/>'
+      +'<text class="nn" x="'+(n.x+70)+'" y="'+(n.y+15)+'" text-anchor="middle" dominant-baseline="central">'+n.n+'</text>'
+      +'<text class="nt" x="'+(n.x+70)+'" y="'+(n.y+35)+'" text-anchor="middle" dominant-baseline="central">'+n.t+'</text></g>';
+  }
+  $("svg").innerHTML=h;
+}
+
+function nm(k){return NODES[k].t}
+function renderPanel(){
+  const s=st.sel,p=$("panel");
+  if(!s){
+    p.innerHTML='<p class="k">Cómo leerlo</p><h2>Una cadena que resultó ser un ciclo</h2>'
+      +'<p>Los números del 1 al 8 siguen el orden de Lonergan. Las flechas azules gruesas son la cadena de siempre. Las verdes, de trazo con puntos y rayas, son las vueltas: lo que cada tarea devuelve a las anteriores. Las grises (opcionales) son otras conexiones que el modelo hizo visibles, y las naranjas son hipótesis por confirmar.</p>'
+      +'<p class="small">Las cuatro primeras tareas escuchan el pasado; las cuatro últimas hablan al presente.</p>';
+    return;
+  }
+  if(s.k==="node"){
+    const n=NODES[s.id],ins=EDGES.filter(e=>e.b===s.id&&vis(e)),outs=EDGES.filter(e=>e.a===s.id&&vis(e));
+    const names=a=>a.length?a.map(e=>nm(e.a===s.id?e.b:e.a)).join(", "):"ninguna a la vista";
+    p.innerHTML='<p class="k">'+n.n+' de 8 · '+n.ph+'</p><h2>'+n.t+'</h2><p>'+n.q+'</p>'
+      +'<p class="small">Recibe de: '+names(ins)+'.</p><p class="small">Entrega a: '+names(outs)+'.</p>'
+      +'<p>'+n.est+'</p><p class="small">En el modelo formal se llama '+n.tech+'.</p>';
+  }else{
+    const e=EDGES.find(x=>x.id===s.id);
+    p.innerHTML='<p class="k">Conexión</p><h2>'+nm(e.a)+' → '+nm(e.b)+'</h2>'
+      +'<p><span class="tag '+e.t+'">'+TIPO[e.t]+'</span></p>'
+      +'<p>'+e.w+'</p>'+(e.s?'<p class="small">'+e.s+'</p>':'')+'<p class="small">'+ESTADO[e.t]+'</p>';
+  }
+}
+
+function renderList(){
+  const box=$("edges");
+  const rows=EDGES.filter(vis);
+  if(!rows.length){box.innerHTML='<div class="empty">No hay conexiones a la vista. Activa algún tipo arriba.</div>';return}
+  box.innerHTML=rows.map(e=>{
+    const t=tally[e.id]||{util:0,estorba:0},m=mine[e.id],dis=uid?"":" disabled";
+    return '<article class="card'+(st.sel&&st.sel.k==="edge"&&st.sel.id===e.id?" on":"")+'" data-card="'+e.id+'" tabindex="0">'
+      +'<div class="top"><span class="id">'+nm(e.a)+' → '+nm(e.b)+'</span><span class="tag '+e.t+'">'+TIPO[e.t]+'</span></div>'
+      +'<p class="why">'+e.w+'</p>'
+      +'<div class="votes"><span class="vlabel">¿Te ayuda?</span>'
+      +'<button class="vbtn u" data-vote="util" data-e="'+e.id+'" aria-pressed="'+(m==="util")+'"'+dis+'>Me sirve · '+t.util+'</button>'
+      +'<button class="vbtn e" data-vote="estorba" data-e="'+e.id+'" aria-pressed="'+(m==="estorba")+'"'+dis+'>No me sirve · '+t.estorba+'</button></div></article>';
+  }).join("");
+}
+function renderVoters(){$("voters").textContent=db?(voters===1?"1 lector ha votado":voters+" lectores han votado"):""}
+function refresh(){renderSvg();renderPanel();renderList()}
+
+$("svg").addEventListener("click",ev=>{
+  const g=ev.target.closest("[data-edge],[data-node]");if(!g)return;
+  st.sel=g.dataset.edge?{k:"edge",id:g.dataset.edge}:{k:"node",id:g.dataset.node};refresh();
+});
+$("svg").addEventListener("keydown",ev=>{
+  if(ev.key!=="Enter"&&ev.key!==" ")return;
+  const g=ev.target.closest("[data-node]");if(!g)return;
+  ev.preventDefault();st.sel={k:"node",id:g.dataset.node};refresh();
+  const again=document.querySelector('[data-node="'+g.dataset.node+'"]');if(again)again.focus();
+});
+$("edges").addEventListener("click",ev=>{
+  const b=ev.target.closest("[data-vote]");
+  if(b){ev.stopPropagation();vote(b.dataset.e,b.dataset.vote);return}
+  const c=ev.target.closest("[data-card]");if(!c)return;
+  st.sel={k:"edge",id:c.dataset.card};refresh();
+});
+[["fC","C"],["fV","V"],["fA","A"],["fP","P"]].forEach(([id,t])=>{
+  $(id).addEventListener("click",()=>{
+    st.show[t]=!st.show[t];$(id).setAttribute("aria-pressed",st.show[t]);
+    if(st.sel&&st.sel.k==="edge"){const e=EDGES.find(x=>x.id===st.sel.id);if(!vis(e))st.sel=null}
+    refresh();
+  });
+});
+
+async function vote(id,val){
+  if(!db||!uid||busy)return;
+  const next=Object.assign({},mine);
+  if(next[id]===val)delete next[id];else next[id]=val;
+  busy=true;
+  try{await db.doc("votos/"+uid).set({v:next});mine=next;$("msg").textContent=""}
+  catch(e){$("msg").textContent="No se pudo guardar tu voto. Puede que tu acceso sea solo de lectura."}
+  busy=false;renderList();
+}
+
+refresh();
+
+(async()=>{
+  try{
+    if(!window.claude||!window.claude.use)return;
+    const [d,u]=await Promise.all([window.claude.use("db"),window.claude.use("user")]);
+    if(!d)return;
+    db=d;uid=u?await u.id():null;
+    renderList();
+    db.collection("votos").onSnapshot(snap=>{
+      const t={};let m={};voters=0;
+      snap.docs.forEach(doc=>{
+        const v=(doc.data()||{}).v||{};voters++;
+        for(const k in v){
+          if(v[k]!=="util"&&v[k]!=="estorba")continue;
+          (t[k]=t[k]||{util:0,estorba:0})[v[k]]++;
+        }
+        if(doc.id===uid)m=v;
+      });
+      tally=t;mine=m;renderList();renderVoters();
+    },()=>{});
+    renderVoters();
+  }catch(e){}
+})();
+</script>

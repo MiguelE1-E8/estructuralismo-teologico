@@ -1,0 +1,37 @@
+﻿origen,destino,tipo,que_fluye,lean_o_estado,origen_del_vinculo
+E0,E1,cadena formal,V2′: cada área de E1 es unión de bloques de D/ de E0,"yNi_compatible, vincN (campos de CasoNicea, no teorema general)",[E] E0 no es una de las ocho de Lonergan; la condición es de modelado
+E1,E2,cadena formal,Em/Ea/Er de E2 se definen desde la evidencia Ev de E1 (compatibilidad antítona),"CompE, toMpD, casoNicea_E2, comp_creciente_excluida",[T] orden de las ocho (pp. 138-139) · [E] condición
+E2,E3,cadena formal,E3 lleva por dentro su modelo de E2 (`M3.xM`); au/ub salen de las circunstancias a,"Cadena38, NiceaE3.xM = NiceaE2, contexto_de_L3",[T] orden de las ocho · [E] condición
+E3,E4,cadena formal,Lo que E3 declara incompatible (Inc) es discrepancia (Dsc) para E4,"IncEnDsc, enlace34_consistente, enlace34_independiente",[T] orden de las ocho · [E] condición
+E4,E5,cadena formal,Una conversión de la dialéctica no es sucesión genética; las bases 𝔅 alimentan a Fundamentos,enlace45,[T] orden de las ocho · [E] condición
+E5,E6,cadena formal,La sucesión genética entre horizontes no cambia el perfil,enlace56,[T] orden de las ocho · [E] condición
+E6,E7,cadena formal,Una posición implica conversión plena y horizonte auténtico; Dom(E7) = Dc,enlace67,[T] orden de las ocho · [E] condición
+E7,E8,cadena formal,Solo los sistemas que son posiciones (Sis) llegan a Comunicaciones; hz(s) es receptivo,enlace78,[T] orden de las ocho · [E] condición
+E8,E7,retorno formalizado,De la comunicación surgen problemas para la sistematización,"RetornoE8E7, retorno87_nicea_excluye",[T] p. 141 (dependencia «en sentido inverso»)
+E7,E6,retorno formalizado,Los modos de conceptualización de la sistemática se emplean en las doctrinas,"RetornoE7E6, retorno76_nicea_excluye_sA",[T] p. 141
+E6,E5,retorno formalizado,La conversión tiene dimensión doctrinal (`dim : horizonte → doctrina`); no toca pf ni rep,"RetornoE6E5, retorno65_nicea_excluye_inaut, fase2_recip",[T] reciprocidad intrafase (p. 141) · [L] qué fluye (Lonergan no lo dice)
+E5,E4,retorno formalizado,Los fundamentos son principio de selección de doctrinas: cubren los perfiles de E4,"RetornoE5E4, retorno54_nicea_cubre_necesaria",[T] fundamentos↔dialéctica (pp. 141-142) · [L] forma
+E6,E3,retorno formalizado,Las doctrinas se aprehenden desde la historia doctrinal (dominio de lo aprehendido),"RetornoE6E3, retorno63_nicea_dominio",[T] doctrinas↔historia (p. 142)
+E2,E1,retorno formalizado,Una cuestión pendiente de E2 pide un dato más: nueva cuestión con `falta` no vacío,"ExtE1, Pide, pideE2N, res_mono, yMalD/G/K_no_ext","[T] interpretación↔investigación (p. 140) · [E] solo ampliar Q1, Ad, K"
+E3,E1,retorno formalizado,La historia suscita cuestiones y revisa el área adoptada de E1,"ExtE1, Pide, pideE3N, fase1_abierta, fase1_no_pierde",[T] historia↔investigación (p. 140) · [E] solo ampliar
+E3,E2,retorno formalizado,"Las circunstancias del autor (lugar, época) cambian el contexto C2; Pend no se formaliza","ContextoA, contexto_mal_excluido, cambiar_a_cambia_C2 (media formalizada: L13)",[T] p. 140 · [L] solo la mitad formalizable
+E4,E2,retorno formalizado,La dialéctica clasifica modos de pensamiento (perfil parcial `car2`) como estructura heurística,"ClasifE4, clasifE2N, clasif_mala_excluida",[T] dialéctica da estructuras heurísticas (p. 140)
+E4,E3,retorno formalizado,Idem para los puntos de vista de la historia (clasificación parcial),"ClasifE4, clasifE3N (parcial), clasif_mala_excluida",[T] p. 140
+E0,E3,entrada directa,h ⊑ E0 y h entra en E3 (el universo U de datos es el mismo),CasoNicea: misma U = Fin 4,[E] decisión de modelado
+E1,E3,entrada directa,Todo dato que E3 usa o cita como evidencia está reunido por E1 (y es relevante),campos de CasoNicea (no teorema derivado),[E] decisión de modelado
+E2,E4,entrada directa,Los resultados de E2 (R2) son ítems de la dialéctica,"Items, injR2",[T] cap. 5 §IV · [E] forma
+E3,E5,entrada directa,Cada punto de vista de E3 clasificado por E4 tiene un horizonte de E5 con ese perfil,"EnlaceHz, hzNicea, hz_mal_excluido",[E] decisión de modelado (no es cita de Lonergan)
+E4,E6,entrada directa,"Pc, ≈, ≺ y Yo/sost/ind",NiceaY sobre NiceaE4; NY2_no_ley (E4 condiciona E6),[E] componentes importados
+E2,E6,entrada directa,"Contextos de E2 importados a Ctx de E6 (parcial, no inyectiva)","CtxImport, ctxNicea (CicloCtx); no entra aún en Ciclo.Modelo",[L]/[E] Lonergan no dice cómo
+E3,E6,entrada directa,Contextos de E3 importados a Ctx de E6 (idem),CtxImport (CicloCtx),[L]/[E]
+E6,E8,entrada directa,El Ap real de E6 define Rec(s); la identidad se mide contra Dc_s,NiceaW sobre NiceaZ,[E] componentes importados
+E5,E7,entrada directa,"hz: Σ → Ω; pf, Df y Aut deciden si un sistema es posición (L14a)","E7.Posc, enlace67",[E] componentes importados
+E4,E7,entrada directa,"Cierre transitivo TG (unidad, L6) y el par posición/contraposición",NiceaZ sobre NiceaY,[E] componentes importados
+E2,E7,entrada directa,Niveles de certeza Ct y probabilidad Pt (cz) de E2,E7.Ct ↔ E2.Grado sigue abierto,[E] decisión pendiente
+E5,E8,entrada directa,hzA: Ag → Ω; Hor deriva de los horizontes de la población,"NiceaW, enlace78",[E] componentes importados
+E2,E5,hipotetico,"Entenderse a sí mismo (Ξ, Alc)",sin formalizar,[L] por precisar
+E1,E6,hipotetico,Enlace diferido,sin formalizar,—
+E4,E8,hipotetico,Segundo uso de la dialéctica (Pur) al integrar las ciencias humanas,sin enlace formal con E4,[T] cap. 14 (p. 351)
+E7,E4,hipotetico,Retorno anotado fuera de la tupla,no figura entre las 17 aristas autorizadas,—
+E7,E1,hipotetico,Retorno anotado fuera de la tupla,no figura entre las 17 aristas autorizadas,—
+E8,E0,hipotetico,Cierre externo: lo comunicado entra en la vida cristiana y de ahí salen datos nuevos para U. Solo amplía U; fuera de la tupla,Ciclo.lean (D); no hay primitivo Con E8→E1,[E] hipótesis

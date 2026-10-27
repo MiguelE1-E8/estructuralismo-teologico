@@ -1,0 +1,260 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd"><key id="d5" for="edge" attr.name="origen" attr.type="string"/>
+<key id="d4" for="edge" attr.name="lean" attr.type="string"/>
+<key id="d3" for="edge" attr.name="fundamento" attr.type="string"/>
+<key id="d2" for="edge" attr.name="tipo" attr.type="string"/>
+<key id="d1" for="node" attr.name="fase" attr.type="string"/>
+<key id="d0" for="node" attr.name="nombre" attr.type="string"/>
+<graph edgedefault="directed"><node id="E0">
+  <data key="d0">Investigación general</data>
+  <data key="d1">previa</data>
+</node>
+<node id="E1">
+  <data key="d0">Investigación especial</data>
+  <data key="d1">mediadora</data>
+</node>
+<node id="E2">
+  <data key="d0">Interpretación</data>
+  <data key="d1">mediadora</data>
+</node>
+<node id="E3">
+  <data key="d0">Historia</data>
+  <data key="d1">mediadora</data>
+</node>
+<node id="E4">
+  <data key="d0">Dialéctica</data>
+  <data key="d1">mediadora</data>
+</node>
+<node id="E5">
+  <data key="d0">Fundamentos</data>
+  <data key="d1">mediada</data>
+</node>
+<node id="E6">
+  <data key="d0">Doctrinas</data>
+  <data key="d1">mediada</data>
+</node>
+<node id="E7">
+  <data key="d0">Sistematización</data>
+  <data key="d1">mediada</data>
+</node>
+<node id="E8">
+  <data key="d0">Comunicaciones</data>
+  <data key="d1">mediada</data>
+</node>
+<edge source="E0" target="E1">
+  <data key="d2">cadena formal</data>
+  <data key="d3">V2′: cada área de E1 es unión de bloques de D/ de E0</data>
+  <data key="d4">yNi_compatible, vincN (campos de CasoNicea, no teorema general)</data>
+  <data key="d5">[E] E0 no es una de las ocho de Lonergan; la condición es de modelado</data>
+</edge>
+<edge source="E0" target="E3">
+  <data key="d2">entrada directa</data>
+  <data key="d3">h ⊑ E0 y h entra en E3 (el universo U de datos es el mismo)</data>
+  <data key="d4">CasoNicea: misma U = Fin 4</data>
+  <data key="d5">[E] decisión de modelado</data>
+</edge>
+<edge source="E1" target="E2">
+  <data key="d2">cadena formal</data>
+  <data key="d3">Em/Ea/Er de E2 se definen desde la evidencia Ev de E1 (compatibilidad antítona)</data>
+  <data key="d4">CompE, toMpD, casoNicea_E2, comp_creciente_excluida</data>
+  <data key="d5">[T] orden de las ocho (pp. 138-139) · [E] condición</data>
+</edge>
+<edge source="E1" target="E3">
+  <data key="d2">entrada directa</data>
+  <data key="d3">Todo dato que E3 usa o cita como evidencia está reunido por E1 (y es relevante)</data>
+  <data key="d4">campos de CasoNicea (no teorema derivado)</data>
+  <data key="d5">[E] decisión de modelado</data>
+</edge>
+<edge source="E1" target="E6">
+  <data key="d2">hipotetico</data>
+  <data key="d3">Enlace diferido</data>
+  <data key="d4">sin formalizar</data>
+  <data key="d5">—</data>
+</edge>
+<edge source="E2" target="E3">
+  <data key="d2">cadena formal</data>
+  <data key="d3">E3 lleva por dentro su modelo de E2 (`M3.xM`); au/ub salen de las circunstancias a</data>
+  <data key="d4">Cadena38, NiceaE3.xM = NiceaE2, contexto_de_L3</data>
+  <data key="d5">[T] orden de las ocho · [E] condición</data>
+</edge>
+<edge source="E2" target="E1">
+  <data key="d2">retorno formalizado</data>
+  <data key="d3">Una cuestión pendiente de E2 pide un dato más: nueva cuestión con `falta` no vacío</data>
+  <data key="d4">ExtE1, Pide, pideE2N, res_mono, yMalD/G/K_no_ext</data>
+  <data key="d5">[T] interpretación↔investigación (p. 140) · [E] solo ampliar Q1, Ad, K</data>
+</edge>
+<edge source="E2" target="E4">
+  <data key="d2">entrada directa</data>
+  <data key="d3">Los resultados de E2 (R2) son ítems de la dialéctica</data>
+  <data key="d4">Items, injR2</data>
+  <data key="d5">[T] cap. 5 §IV · [E] forma</data>
+</edge>
+<edge source="E2" target="E6">
+  <data key="d2">entrada directa</data>
+  <data key="d3">Contextos de E2 importados a Ctx de E6 (parcial, no inyectiva)</data>
+  <data key="d4">CtxImport, ctxNicea (CicloCtx); no entra aún en Ciclo.Modelo</data>
+  <data key="d5">[L]/[E] Lonergan no dice cómo</data>
+</edge>
+<edge source="E2" target="E7">
+  <data key="d2">entrada directa</data>
+  <data key="d3">Niveles de certeza Ct y probabilidad Pt (cz) de E2</data>
+  <data key="d4">E7.Ct ↔ E2.Grado sigue abierto</data>
+  <data key="d5">[E] decisión pendiente</data>
+</edge>
+<edge source="E2" target="E5">
+  <data key="d2">hipotetico</data>
+  <data key="d3">Entenderse a sí mismo (Ξ, Alc)</data>
+  <data key="d4">sin formalizar</data>
+  <data key="d5">[L] por precisar</data>
+</edge>
+<edge source="E3" target="E4">
+  <data key="d2">cadena formal</data>
+  <data key="d3">Lo que E3 declara incompatible (Inc) es discrepancia (Dsc) para E4</data>
+  <data key="d4">IncEnDsc, enlace34_consistente, enlace34_independiente</data>
+  <data key="d5">[T] orden de las ocho · [E] condición</data>
+</edge>
+<edge source="E3" target="E1">
+  <data key="d2">retorno formalizado</data>
+  <data key="d3">La historia suscita cuestiones y revisa el área adoptada de E1</data>
+  <data key="d4">ExtE1, Pide, pideE3N, fase1_abierta, fase1_no_pierde</data>
+  <data key="d5">[T] historia↔investigación (p. 140) · [E] solo ampliar</data>
+</edge>
+<edge source="E3" target="E2">
+  <data key="d2">retorno formalizado</data>
+  <data key="d3">Las circunstancias del autor (lugar, época) cambian el contexto C2; Pend no se formaliza</data>
+  <data key="d4">ContextoA, contexto_mal_excluido, cambiar_a_cambia_C2 (media formalizada: L13)</data>
+  <data key="d5">[T] p. 140 · [L] solo la mitad formalizable</data>
+</edge>
+<edge source="E3" target="E5">
+  <data key="d2">entrada directa</data>
+  <data key="d3">Cada punto de vista de E3 clasificado por E4 tiene un horizonte de E5 con ese perfil</data>
+  <data key="d4">EnlaceHz, hzNicea, hz_mal_excluido</data>
+  <data key="d5">[E] decisión de modelado (no es cita de Lonergan)</data>
+</edge>
+<edge source="E3" target="E6">
+  <data key="d2">entrada directa</data>
+  <data key="d3">Contextos de E3 importados a Ctx de E6 (idem)</data>
+  <data key="d4">CtxImport (CicloCtx)</data>
+  <data key="d5">[L]/[E]</data>
+</edge>
+<edge source="E4" target="E5">
+  <data key="d2">cadena formal</data>
+  <data key="d3">Una conversión de la dialéctica no es sucesión genética; las bases 𝔅 alimentan a Fundamentos</data>
+  <data key="d4">enlace45</data>
+  <data key="d5">[T] orden de las ocho · [E] condición</data>
+</edge>
+<edge source="E4" target="E2">
+  <data key="d2">retorno formalizado</data>
+  <data key="d3">La dialéctica clasifica modos de pensamiento (perfil parcial `car2`) como estructura heurística</data>
+  <data key="d4">ClasifE4, clasifE2N, clasif_mala_excluida</data>
+  <data key="d5">[T] dialéctica da estructuras heurísticas (p. 140)</data>
+</edge>
+<edge source="E4" target="E3">
+  <data key="d2">retorno formalizado</data>
+  <data key="d3">Idem para los puntos de vista de la historia (clasificación parcial)</data>
+  <data key="d4">ClasifE4, clasifE3N (parcial), clasif_mala_excluida</data>
+  <data key="d5">[T] p. 140</data>
+</edge>
+<edge source="E4" target="E6">
+  <data key="d2">entrada directa</data>
+  <data key="d3">Pc, ≈, ≺ y Yo/sost/ind</data>
+  <data key="d4">NiceaY sobre NiceaE4; NY2_no_ley (E4 condiciona E6)</data>
+  <data key="d5">[E] componentes importados</data>
+</edge>
+<edge source="E4" target="E7">
+  <data key="d2">entrada directa</data>
+  <data key="d3">Cierre transitivo TG (unidad, L6) y el par posición/contraposición</data>
+  <data key="d4">NiceaZ sobre NiceaY</data>
+  <data key="d5">[E] componentes importados</data>
+</edge>
+<edge source="E4" target="E8">
+  <data key="d2">hipotetico</data>
+  <data key="d3">Segundo uso de la dialéctica (Pur) al integrar las ciencias humanas</data>
+  <data key="d4">sin enlace formal con E4</data>
+  <data key="d5">[T] cap. 14 (p. 351)</data>
+</edge>
+<edge source="E5" target="E6">
+  <data key="d2">cadena formal</data>
+  <data key="d3">La sucesión genética entre horizontes no cambia el perfil</data>
+  <data key="d4">enlace56</data>
+  <data key="d5">[T] orden de las ocho · [E] condición</data>
+</edge>
+<edge source="E5" target="E4">
+  <data key="d2">retorno formalizado</data>
+  <data key="d3">Los fundamentos son principio de selección de doctrinas: cubren los perfiles de E4</data>
+  <data key="d4">RetornoE5E4, retorno54_nicea_cubre_necesaria</data>
+  <data key="d5">[T] fundamentos↔dialéctica (pp. 141-142) · [L] forma</data>
+</edge>
+<edge source="E5" target="E7">
+  <data key="d2">entrada directa</data>
+  <data key="d3">hz: Σ → Ω; pf, Df y Aut deciden si un sistema es posición (L14a)</data>
+  <data key="d4">E7.Posc, enlace67</data>
+  <data key="d5">[E] componentes importados</data>
+</edge>
+<edge source="E5" target="E8">
+  <data key="d2">entrada directa</data>
+  <data key="d3">hzA: Ag → Ω; Hor deriva de los horizontes de la población</data>
+  <data key="d4">NiceaW, enlace78</data>
+  <data key="d5">[E] componentes importados</data>
+</edge>
+<edge source="E6" target="E7">
+  <data key="d2">cadena formal</data>
+  <data key="d3">Una posición implica conversión plena y horizonte auténtico; Dom(E7) = Dc</data>
+  <data key="d4">enlace67</data>
+  <data key="d5">[T] orden de las ocho · [E] condición</data>
+</edge>
+<edge source="E6" target="E5">
+  <data key="d2">retorno formalizado</data>
+  <data key="d3">La conversión tiene dimensión doctrinal (`dim : horizonte → doctrina`); no toca pf ni rep</data>
+  <data key="d4">RetornoE6E5, retorno65_nicea_excluye_inaut, fase2_recip</data>
+  <data key="d5">[T] reciprocidad intrafase (p. 141) · [L] qué fluye (Lonergan no lo dice)</data>
+</edge>
+<edge source="E6" target="E3">
+  <data key="d2">retorno formalizado</data>
+  <data key="d3">Las doctrinas se aprehenden desde la historia doctrinal (dominio de lo aprehendido)</data>
+  <data key="d4">RetornoE6E3, retorno63_nicea_dominio</data>
+  <data key="d5">[T] doctrinas↔historia (p. 142)</data>
+</edge>
+<edge source="E6" target="E8">
+  <data key="d2">entrada directa</data>
+  <data key="d3">El Ap real de E6 define Rec(s); la identidad se mide contra Dc_s</data>
+  <data key="d4">NiceaW sobre NiceaZ</data>
+  <data key="d5">[E] componentes importados</data>
+</edge>
+<edge source="E7" target="E8">
+  <data key="d2">cadena formal</data>
+  <data key="d3">Solo los sistemas que son posiciones (Sis) llegan a Comunicaciones; hz(s) es receptivo</data>
+  <data key="d4">enlace78</data>
+  <data key="d5">[T] orden de las ocho · [E] condición</data>
+</edge>
+<edge source="E7" target="E6">
+  <data key="d2">retorno formalizado</data>
+  <data key="d3">Los modos de conceptualización de la sistemática se emplean en las doctrinas</data>
+  <data key="d4">RetornoE7E6, retorno76_nicea_excluye_sA</data>
+  <data key="d5">[T] p. 141</data>
+</edge>
+<edge source="E7" target="E4">
+  <data key="d2">hipotetico</data>
+  <data key="d3">Retorno anotado fuera de la tupla</data>
+  <data key="d4">no figura entre las 17 aristas autorizadas</data>
+  <data key="d5">—</data>
+</edge>
+<edge source="E7" target="E1">
+  <data key="d2">hipotetico</data>
+  <data key="d3">Retorno anotado fuera de la tupla</data>
+  <data key="d4">no figura entre las 17 aristas autorizadas</data>
+  <data key="d5">—</data>
+</edge>
+<edge source="E8" target="E7">
+  <data key="d2">retorno formalizado</data>
+  <data key="d3">De la comunicación surgen problemas para la sistematización</data>
+  <data key="d4">RetornoE8E7, retorno87_nicea_excluye</data>
+  <data key="d5">[T] p. 141 (dependencia «en sentido inverso»)</data>
+</edge>
+<edge source="E8" target="E0">
+  <data key="d2">hipotetico</data>
+  <data key="d3">Cierre externo: lo comunicado entra en la vida cristiana y de ahí salen datos nuevos para U. Solo amplía U; fuera de la tupla</data>
+  <data key="d4">Ciclo.lean (D); no hay primitivo Con E8→E1</data>
+  <data key="d5">[E] hipótesis</data>
+</edge>
+</graph></graphml>
