@@ -5,7 +5,6 @@ type: software
 authors:
   - family-names: "Vega Ochoa"
     given-names: "Miguel Angel"
-    affiliation: "Pontificia Universidad Javeriana"
     orcid: "https://orcid.org/0009-0006-3898-8757"
 license: Apache-2.0
 repository-code: "https://github.com/MiguelE1-E8/estructuralismo-teologico"
