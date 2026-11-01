@@ -1,0 +1,385 @@
+{
+  "version": "0.1.0-borrador",
+  "estado": "Borrador sin probar en un documento. La compuerta de la etapa 0 a la 1 exige la tabla de leyes con preguntas probadas.",
+  "etiquetas": {
+    "T": "Texto de Lonergan (con página)",
+    "L": "Lectura formal propia",
+    "E": "Estipulación de modelado"
+  },
+  "licencia": "Todos los derechos reservados, con permiso académico",
+  "etapas": [
+    {
+      "id": "E0",
+      "nombre": "Inventario de datos",
+      "fase": 0,
+      "guia": "¿Qué datos hay y de dónde salen?"
+    },
+    {
+      "id": "E1",
+      "nombre": "Investigación",
+      "fase": 1,
+      "guia": "¿Qué datos hacen falta para responder la cuestión?"
+    },
+    {
+      "id": "E2",
+      "nombre": "Interpretación",
+      "fase": 1,
+      "guia": "¿Qué quiso decir el texto o el autor?"
+    },
+    {
+      "id": "E3",
+      "nombre": "Historia",
+      "fase": 1,
+      "guia": "¿Qué estaba pasando y cómo se llegó a esto?"
+    },
+    {
+      "id": "E4",
+      "nombre": "Dialéctica",
+      "fase": 1,
+      "guia": "¿En qué discrepan las posiciones y por qué?"
+    },
+    {
+      "id": "E5",
+      "nombre": "Fundamentos",
+      "fase": 2,
+      "guia": "¿Desde qué horizonte se habla?"
+    },
+    {
+      "id": "E6",
+      "nombre": "Doctrinas",
+      "fase": 2,
+      "guia": "¿Qué se afirma como doctrina?"
+    },
+    {
+      "id": "E7",
+      "nombre": "Sistemática",
+      "fase": 2,
+      "guia": "¿Cómo se entiende y se ordena lo afirmado?"
+    },
+    {
+      "id": "E8",
+      "nombre": "Comunicaciones",
+      "fase": 2,
+      "guia": "¿Cómo se comunica a otros?"
+    }
+  ],
+  "preguntas": [
+    {
+      "id": "E0-1",
+      "etapa": "E0",
+      "texto": "¿Se listaron los datos de partida (textos, testimonios, cifras) con su procedencia?",
+      "etiqueta": "E",
+      "auditable": true,
+      "formal": "Inventario previo de datos (E0)",
+      "ayuda": "Registre en la nota dónde está ese inventario o qué falta."
+    },
+    {
+      "id": "E0-2",
+      "etapa": "E0",
+      "texto": "¿El inventario separa lo observado de lo interpretado?",
+      "etiqueta": "L",
+      "auditable": true,
+      "ayuda": "Una cifra o una cita es un dato; la lectura que se hace de ella pertenece a otra etapa."
+    },
+    {
+      "id": "E1-1",
+      "etapa": "E1",
+      "texto": "¿Cada cuestión que el texto investiga está formulada de manera explícita?",
+      "etiqueta": "L",
+      "auditable": true,
+      "formal": "E1: cuestiones (Q1)"
+    },
+    {
+      "id": "E1-2",
+      "etapa": "E1",
+      "texto": "¿Se indica el área de datos considerada y lo que queda fuera de ella?",
+      "etiqueta": "L",
+      "auditable": true,
+      "formal": "E1: área (Ad)"
+    },
+    {
+      "id": "E1-3",
+      "etapa": "E1",
+      "texto": "¿Los datos citados son accesibles y comprobables por otro lector?",
+      "etiqueta": "L",
+      "auditable": true,
+      "formal": "E1: datos"
+    },
+    {
+      "id": "E1-4",
+      "etapa": "E1",
+      "texto": "¿El texto reconoce los datos que le faltan?",
+      "etiqueta": "L",
+      "auditable": true,
+      "formal": "E1: vacíos (K)",
+      "ayuda": "Un vacío reconocido es una laguna declarada, no una falla."
+    },
+    {
+      "id": "E2-1",
+      "etapa": "E2",
+      "texto": "¿Cada lectura de una fuente remite a la evidencia que la sostiene?",
+      "etiqueta": "L",
+      "auditable": true,
+      "formal": "E2: evidencia (Ev) y compatibilidad (Em, Ea, Er)"
+    },
+    {
+      "id": "E2-2",
+      "etapa": "E2",
+      "texto": "¿Se distingue lo que el autor de la fuente tenía en mente de lo que el intérprete entiende?",
+      "etiqueta": "L",
+      "auditable": true,
+      "formal": "E2: m* (autor) frente a m (intérprete)"
+    },
+    {
+      "id": "E2-3",
+      "etapa": "E2",
+      "texto": "¿Quedan cuestiones de interpretación pendientes? ¿Piden datos que aún no se tienen?",
+      "etiqueta": "L",
+      "auditable": true,
+      "formal": "E2: cuestiones pendientes (Pend)",
+      "ayuda": "Si piden más datos, el modelo permite el retorno a E1 (relación Pide)."
+    },
+    {
+      "id": "E2-4",
+      "etapa": "E2",
+      "texto": "¿Se declara cuán cierta es cada lectura?",
+      "etiqueta": "L",
+      "auditable": true,
+      "formal": "E2: juicio (Jz); Jz = cierto equivale a Pend vacío",
+      "ayuda": "Una lectura cierta no deja cuestiones pendientes."
+    },
+    {
+      "id": "E3-1",
+      "etapa": "E3",
+      "texto": "¿Cada fuente se sitúa con autor, lugar y momento?",
+      "etiqueta": "E",
+      "auditable": true,
+      "formal": "E3: autor, lugar, momento (Ag × Lg × Iv)",
+      "ayuda": "Decisión de modelado aceptada el 18-oct: la fuente lleva los tres."
+    },
+    {
+      "id": "E3-2",
+      "etapa": "E3",
+      "texto": "¿Se distingue lo que ocurrió de lo que las fuentes dicen que ocurrió?",
+      "etiqueta": "L",
+      "auditable": true,
+      "formal": "E3: movimiento histórico frente a fuentes"
+    },
+    {
+      "id": "E3-3",
+      "etapa": "E3",
+      "texto": "¿Las cuestiones históricas planteadas indican qué cuestiones de investigación inducen?",
+      "etiqueta": "L",
+      "auditable": true,
+      "formal": "E3 → E1: cuestiones (Qint)"
+    },
+    {
+      "id": "E3-4",
+      "etapa": "E3",
+      "texto": "Si el texto narra un proceso de progreso o de decadencia, ¿señala cómo ocurre?",
+      "etiqueta": "L",
+      "auditable": true,
+      "formal": "E3: proceso de decadencia (caso Typos); CicloDeclive"
+    },
+    {
+      "id": "E4-1",
+      "etapa": "E4",
+      "texto": "¿Se identifican de manera explícita las discrepancias entre autores o posiciones?",
+      "etiqueta": "L",
+      "auditable": true,
+      "formal": "E4: discrepancias (Dsc)"
+    },
+    {
+      "id": "E4-2",
+      "etapa": "E4",
+      "texto": "¿Se distingue si cada discrepancia viene de los datos, de la interpretación o del horizonte de quien la sostiene?",
+      "etiqueta": "L",
+      "auditable": true,
+      "formal": "E4: clasificación; discrepancia de horizonte"
+    },
+    {
+      "id": "E4-3",
+      "etapa": "E4",
+      "texto": "¿El conflicto se explicita hasta los fundamentos, es decir, hasta el horizonte que lo explica?",
+      "etiqueta": "L",
+      "auditable": true,
+      "formal": "E4 → E5"
+    },
+    {
+      "id": "E4-4",
+      "etapa": "E4",
+      "texto": "¿Las posiciones y contraposiciones se reclasifican a la luz de un horizonte declarado?",
+      "etiqueta": "L",
+      "auditable": true,
+      "formal": "E4: reclasificación (Pos / Contra)"
+    },
+    {
+      "id": "E5-1",
+      "etapa": "E5",
+      "texto": "¿Quien opera declara el horizonte desde el que habla?",
+      "etiqueta": "E",
+      "auditable": false,
+      "formal": "E5: horizonte",
+      "ayuda": "No es un dato del texto: lo declara quien usa la herramienta. Escríbalo en la ficha y use la nota para remitir a él."
+    },
+    {
+      "id": "E5-2",
+      "etapa": "E5",
+      "texto": "¿La conversión que el texto presupone (intelectual, moral, religiosa) está dicha y no solo supuesta?",
+      "etiqueta": "L",
+      "auditable": true,
+      "formal": "E5: horizonte con conversión plena"
+    },
+    {
+      "id": "E5-3",
+      "etapa": "E5",
+      "texto": "¿El horizonte declarado es coherente con el perfil de posición que el texto usa en la dialéctica?",
+      "etiqueta": "L",
+      "auditable": true,
+      "formal": "E5 ↔ E4: perfil de horizonte (pf) y perfil de posición (Pc)"
+    },
+    {
+      "id": "E6-1",
+      "etapa": "E6",
+      "texto": "¿Las afirmaciones doctrinales se separan de las hipótesis y de las opiniones, y cada una remite a una posición declarada?",
+      "etiqueta": "L",
+      "auditable": true,
+      "formal": "E6: doctrinas establecidas"
+    },
+    {
+      "id": "E6-2",
+      "etapa": "E6",
+      "texto": "¿Alguna afirmación pasa por doctrina sin posición que la sostenga?",
+      "etiqueta": "L",
+      "auditable": true,
+      "formal": "E6: contraposición sin doctrina establecida"
+    },
+    {
+      "id": "E6-3",
+      "etapa": "E6",
+      "texto": "¿Se declara desde dónde afirma quien opera?",
+      "etiqueta": "E",
+      "auditable": false,
+      "formal": "E6",
+      "ayuda": "Declaración de quien opera, no correlato observable en un texto."
+    },
+    {
+      "id": "E7-1",
+      "etapa": "E7",
+      "texto": "¿Se indican las cuestiones que la sistematización deja sin respuesta?",
+      "etiqueta": "L",
+      "auditable": true,
+      "formal": "E7: cuestiones sin respuesta (Cqs / Cps / Orr)"
+    },
+    {
+      "id": "E7-2",
+      "etapa": "E7",
+      "texto": "¿Cada término técnico está definido y se usa con ese sentido en todo el texto?",
+      "etiqueta": "L",
+      "auditable": true,
+      "formal": "E7: términos y relaciones"
+    },
+    {
+      "id": "E7-3",
+      "etapa": "E7",
+      "texto": "¿Los términos y relaciones propuestos son coherentes con las doctrinas que el texto afirma?",
+      "etiqueta": "L",
+      "auditable": true,
+      "formal": "E7 ↔ E6"
+    },
+    {
+      "id": "E8-1",
+      "etapa": "E8",
+      "texto": "¿Se indica a quién se comunica el contenido y en qué lugar o medio?",
+      "etiqueta": "L",
+      "auditable": true,
+      "formal": "E8: lugares de comunicación (Lug)"
+    },
+    {
+      "id": "E8-2",
+      "etapa": "E8",
+      "texto": "Al adaptar el mensaje, ¿se señala qué se conserva y qué cambia respecto de lo sistematizado y de lo doctrinal?",
+      "etiqueta": "L",
+      "auditable": true,
+      "formal": "E8 → E7"
+    },
+    {
+      "id": "E8-3",
+      "etapa": "E8",
+      "texto": "¿Se prevé qué respuesta de los destinatarios volverá a la investigación?",
+      "etiqueta": "E",
+      "auditable": true,
+      "formal": "Cierre externo del modelo conjunto",
+      "ayuda": "El cierre externo solo amplía los datos. Es una estipulación de modelado."
+    },
+    {
+      "id": "X-1",
+      "etapa": "X",
+      "texto": "¿El texto muestra que la interpretación señala qué datos faltan y que los datos reunidos acotan qué lecturas son posibles?",
+      "etiqueta": "T",
+      "auditable": true,
+      "formal": "E2 ↔ E1 (retornos y adelante)",
+      "ayuda": "La pregunta operacionaliza la dependencia recíproca; la operacionalización es lectura propia [L].",
+      "fuente": "Lonergan, Método en teología, p. 140 (paginación de la edición del Project; reconciliar con la edición que se cite)",
+      "activa_si": {
+        "todas": [
+          "E1",
+          "E2"
+        ]
+      }
+    },
+    {
+      "id": "X-2",
+      "etapa": "X",
+      "texto": "Cuando doctrinas, sistemática o comunicación reorientan la investigación, ¿los resultados siguen apelando a los datos?",
+      "etiqueta": "T",
+      "auditable": true,
+      "formal": "Retornos hacia E1: solo tocan Q1, Ad, K",
+      "ayuda": "La regla de qué toca cada retorno es estipulación [E]; lo que dice Lonergan es que la fase 1 no pierde su apertura.",
+      "fuente": "Lonergan, Método en teología, pp. 141-142 (paginación de la edición del Project)",
+      "activa_si": {
+        "todas": [
+          "E1"
+        ],
+        "alguna": [
+          "E5",
+          "E6",
+          "E7",
+          "E8"
+        ]
+      }
+    },
+    {
+      "id": "X-3",
+      "etapa": "X",
+      "texto": "¿Se muestra la relación entre la doctrina afirmada y su historia?",
+      "etiqueta": "T",
+      "auditable": true,
+      "formal": "E6 ↔ E3 (arista cruzada)",
+      "ayuda": "Doctrinas e historia doctrinal son un par de interdependencia en Lonergan.",
+      "fuente": "Lonergan, Método en teología, p. 142 (paginación de la edición del Project)",
+      "activa_si": {
+        "todas": [
+          "E3",
+          "E6"
+        ]
+      }
+    },
+    {
+      "id": "X-4",
+      "etapa": "X",
+      "texto": "¿Se muestra la relación entre el horizonte declarado y las discrepancias que ese horizonte ordena?",
+      "etiqueta": "T",
+      "auditable": true,
+      "formal": "E5 ↔ E4 (arista cruzada)",
+      "ayuda": "Fundamentos y dialéctica son el otro par de interdependencia.",
+      "fuente": "Lonergan, Método en teología, p. 142 (paginación de la edición del Project)",
+      "activa_si": {
+        "todas": [
+          "E4",
+          "E5"
+        ]
+      }
+    }
+  ]
+}

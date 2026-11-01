@@ -1,0 +1,6 @@
+© 2026 Miguel Ángel Vega Ochoa. Todos los derechos reservados, con permiso académico.
+Esta carpeta contiene material posterior a la versión v0.1.0 y NO se rige por el LICENSE (Apache-2.0) de la raíz del repositorio.
+Se permite leer, ejecutar para verificar, citar con atribución, reproducir fragmentos breves y reproducir resultados para revisión por pares.
+Copiar, modificar, redistribuir o crear otros productos requiere permiso escrito del titular.
+Texto completo: LICENCIA-POSTERIOR-A-v0.1.0.md (raíz del repositorio).
+Copie este archivo, con el nombre AVISO-DERECHOS.txt, dentro de ficha/, sitio/, docs/, prototipo/ y de cualquier carpeta nueva antes de subirla.

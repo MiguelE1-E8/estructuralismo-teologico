@@ -1,0 +1,20 @@
+{
+  "esquema": "ficha-caso/0.2.0",
+  "sitio": "0.2.0",
+  "repositorio": "v0.1.0",
+  "doi": "10.5281/zenodo.23697821",
+  "doi_todas_las_versiones": "10.5281/zenodo.23697770",
+  "lean": "leanprover/lean4:v4.22.0",
+  "etapas": {
+    "E0": "v0.1.0",
+    "E1": "v0.1.0",
+    "E2": "v0.1.0",
+    "E3": "v0.1.0",
+    "E4": "v0.1.0",
+    "E5": "v0.1.0",
+    "E6": "v0.1.0",
+    "E7": "v0.1.0",
+    "E8": "v0.1.0"
+  },
+  "banco_preguntas": "0.1.0-borrador"
+}

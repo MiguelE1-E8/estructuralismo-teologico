@@ -1,0 +1,42 @@
+{
+  "generado_por": "tools/EmitReglas.lean",
+  "lean": "4.22.0",
+  "commit": "54e6474",
+  "doi": "10.5281/zenodo.23697821",
+  "alcance": "Lo que Lean calcula o comprueba sobre el modelo. No dice que la interfaz este verificada en Lean. Las reglas de pantalla estan en reglas_interfaz.json [E].",
+  "conexo": true,
+  "resumen": {"aristas": 17, "criticas": 9, "redundantes": 8},
+  "aristas": [
+    {"de": "E1", "a": "E2", "tipo": "adelante", "estado_formalizacion": "por_formalizar", "critica": true, "redundante": false},
+    {"de": "E2", "a": "E3", "tipo": "adelante", "estado_formalizacion": "formal", "critica": true, "redundante": false},
+    {"de": "E3", "a": "E4", "tipo": "adelante", "estado_formalizacion": "formal", "critica": true, "redundante": false},
+    {"de": "E4", "a": "E5", "tipo": "adelante", "estado_formalizacion": "formal", "critica": true, "redundante": false},
+    {"de": "E5", "a": "E6", "tipo": "adelante", "estado_formalizacion": "formal", "critica": true, "redundante": false},
+    {"de": "E6", "a": "E7", "tipo": "adelante", "estado_formalizacion": "formal", "critica": true, "redundante": false},
+    {"de": "E7", "a": "E8", "tipo": "adelante", "estado_formalizacion": "formal", "critica": true, "redundante": false},
+    {"de": "E2", "a": "E1", "tipo": "retorno", "estado_formalizacion": "anotada", "critica": false, "redundante": true},
+    {"de": "E3", "a": "E1", "tipo": "retorno", "estado_formalizacion": "por_formalizar", "critica": false, "redundante": true},
+    {"de": "E3", "a": "E2", "tipo": "retorno", "estado_formalizacion": "parcial", "critica": false, "redundante": true},
+    {"de": "E4", "a": "E2", "tipo": "retorno", "estado_formalizacion": "por_formalizar", "critica": false, "redundante": true},
+    {"de": "E4", "a": "E3", "tipo": "retorno", "estado_formalizacion": "por_formalizar", "critica": false, "redundante": true},
+    {"de": "E8", "a": "E7", "tipo": "retorno", "estado_formalizacion": "por_formalizar", "critica": true, "redundante": false},
+    {"de": "E7", "a": "E6", "tipo": "retorno", "estado_formalizacion": "anotada", "critica": true, "redundante": false},
+    {"de": "E6", "a": "E5", "tipo": "retorno", "estado_formalizacion": "por_formalizar", "critica": false, "redundante": true},
+    {"de": "E6", "a": "E3", "tipo": "retorno", "estado_formalizacion": "por_formalizar", "critica": false, "redundante": true},
+    {"de": "E5", "a": "E4", "tipo": "retorno", "estado_formalizacion": "por_formalizar", "critica": false, "redundante": true}
+  ],
+  "retornos_a_E1": {"amplia": ["Q1 (cuestiones)", "Ad (area adoptada)", "K (datos que la teologia necesita)"], "no_toca": ["D1 de las cuestiones anteriores", "G (datos reunidos)"], "teoremas": ["Ciclo.fase1_abierta", "Ciclo.fase1_no_pierde", "CicloB.ExtE1"]},
+  "libro_de_cuentas": [
+    {"enlace": "E3->E4", "teorema": "Ciclo.N.nicea_enlace_independiente", "modulo": "CicloF2", "excluye": "un E4 que cumple su ley y no recoge las incompatibilidades de E3"},
+    {"enlace": "E8->E7", "teorema": "Ciclo.retorno87_nicea_excluye", "modulo": "CicloF2", "excluye": "un problema planteado sin cuestion pendiente en la sistematica"},
+    {"enlace": "E7->E6", "teorema": "Ciclo.retorno76_nicea_excluye_sA", "modulo": "CicloF2", "excluye": "emplear en doctrinas un sistema no adecuado (s_A)"},
+    {"enlace": "E5->E4", "teorema": "Ciclo.retorno54_nicea_cubre_necesaria", "modulo": "CicloF2", "excluye": "una familia de E4 sin cobertura de los perfiles"},
+    {"enlace": "E6->E3", "teorema": "Ciclo.retorno63_nicea_dominio", "modulo": "CicloF2", "excluye": "doctrinas fuera del dominio de las aprehendidas"},
+    {"enlace": "E6->E5", "teorema": "Ciclo.retorno65_nicea_excluye_inaut", "modulo": "CicloF2", "excluye": "dimension doctrinal en un horizonte inautentico"},
+    {"enlace": "E2->E1, E3->E1", "teorema": "Ciclo.CicloB.yMalD_no_ext / yMalG_no_ext / yMalK_no_ext", "modulo": "CicloF2", "excluye": "estrechar D1, cambiar G o encoger K"},
+    {"enlace": "E4->E2, E4->E3", "teorema": "Ciclo.CicloB.clasif_mala_excluida", "modulo": "CicloF2", "excluye": "perfil que contradice car"},
+    {"enlace": "E3->E2", "teorema": "Ciclo.CicloB.contexto_mal_excluido", "modulo": "CicloF2", "excluye": "ub que no sale de a"},
+    {"enlace": "E1->E2", "teorema": "Ciclo.CicloB.comp_creciente_excluida", "modulo": "CicloF2", "excluye": "compatibilidad no antitona"}
+  ],
+  "contraejemplos_de_un_caso": [{"teorema": "Ciclo.N.NY2_no_ley", "modulo": "CicloF4b", "alcance": "un caso (Nicea): tras reclasificar un punto de vista en E4, el E6 anterior no cumple su ley (L12)"}, {"teorema": "Ciclo.N.NY4_no_ley", "modulo": "CicloF6", "alcance": "un caso (Nicea): E6 sobre un E4 en declive no cumple su ley"}, {"teorema": "Ciclo.paso_depende_de_E4", "modulo": "CicloF4", "alcance": "con los mismos datos, un paso es admisible desde un estado y no desde otro"}, {"teorema": "Ciclo.N.giro2_no_es_paso", "modulo": "CicloF5", "alcance": "en el caso Nicea, el giro de correccion no es un paso del tipo acumulativo"}]
+}
