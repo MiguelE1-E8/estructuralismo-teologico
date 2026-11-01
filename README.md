@@ -23,9 +23,14 @@ Lean 4.22.0: compila sin errores. 1843 teoremas revisados, 0 con `sorryAx`; úni
 consistencia de los modelos, no que los enunciados reproduzcan el texto de Lonergan.
 No se ha probado con otras versiones de Lean.
 
-## Licencias
-Código: Apache-2.0 (`LICENSE`). Textos y documentación: CC BY 4.0 (`LICENSE-docs`).
-Los nombres no están licenciados.
+## Versiones y licencias
+| Material | Licencia |
+|---|---|
+| Versión **v0.1.0** (etiqueta `v0.1.0`; DOI 10.5281/zenodo.23697821) — código | Apache-2.0 (`LICENSE`) |
+| Versión **v0.1.0** — textos y documentación | CC BY 4.0 (`LICENSE-docs`) |
+| **Todo lo añadido después de v0.1.0** | Todos los derechos reservados, con permiso académico (`LICENCIA-POSTERIOR-A-v0.1.0.md`) |
+
+Cada carpeta posterior a v0.1.0 lleva un `AVISO-DERECHOS.txt` (modelo en `plantillas/`). Los nombres no están licenciados.
 
 ## Cita
-Ver `CITATION.cff`. El DOI se añadirá al publicar el primer release.
+Ver `CITATION.cff`. DOI de la versión v0.1.0: 10.5281/zenodo.23697821. DOI de todas las versiones: 10.5281/zenodo.23697770.
