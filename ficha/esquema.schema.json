@@ -1,0 +1,294 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/MiguelE1-E8/estructuralismo-teologico/ficha/esquema.schema.json",
+  "title": "Ficha de caso E0–E8",
+  "description": "Esquema de la ficha que exporta el sitio estático. Versión 0.2.0 (añade la procedencia de cada etiqueta). Las fichas 0.1.0 se leen con procedencia «humano». Todos los derechos reservados, con permiso académico.",
+  "type": "object",
+  "required": [
+    "esquema",
+    "versiones",
+    "nivel_afirmacion",
+    "caso",
+    "etapas_involucradas",
+    "respuestas",
+    "segmentos"
+  ],
+  "properties": {
+    "esquema": {
+      "const": "ficha-caso/0.2.0"
+    },
+    "ejemplo": {
+      "type": "boolean",
+      "description": "Verdadero si la ficha es el caso de ejemplo que trae el sitio."
+    },
+    "exportada": {
+      "type": "string",
+      "description": "Fecha y hora ISO 8601 de la exportación."
+    },
+    "versiones": {
+      "type": "object",
+      "required": [
+        "esquema",
+        "sitio",
+        "repositorio",
+        "doi",
+        "lean",
+        "etapas",
+        "banco_preguntas"
+      ],
+      "properties": {
+        "esquema": {
+          "type": "string"
+        },
+        "sitio": {
+          "type": "string"
+        },
+        "repositorio": {
+          "type": "string"
+        },
+        "doi": {
+          "type": "string"
+        },
+        "doi_todas_las_versiones": {
+          "type": "string"
+        },
+        "lean": {
+          "type": "string"
+        },
+        "banco_preguntas": {
+          "type": "string"
+        },
+        "etapas": {
+          "type": "object",
+          "patternProperties": {
+            "^E[0-8]$": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        }
+      }
+    },
+    "nivel_afirmacion": {
+      "enum": [
+        "A",
+        "B"
+      ],
+      "description": "A guía narrativa; B ficha con validaciones codificadas. El nivel C (codificación en Lean revisada por un experto) no se produce en este sitio."
+    },
+    "caso": {
+      "type": "object",
+      "required": [
+        "titulo",
+        "etapa",
+        "certeza"
+      ],
+      "properties": {
+        "titulo": {
+          "type": "string"
+        },
+        "autoria": {
+          "type": "string"
+        },
+        "fecha": {
+          "type": "string"
+        },
+        "ruta": {
+          "enum": [
+            "A",
+            "B",
+            "A+B"
+          ]
+        },
+        "etapa": {
+          "enum": [
+            "",
+            "E0",
+            "E1",
+            "E2",
+            "E3",
+            "E4",
+            "E5",
+            "E6",
+            "E7",
+            "E8"
+          ],
+          "description": "Etapa en la que está el trabajo del caso."
+        },
+        "certeza": {
+          "enum": [
+            "sin_valorar",
+            "provisional",
+            "probable",
+            "establecida"
+          ],
+          "description": "Certeza que declara quien opera."
+        },
+        "tema": {
+          "type": "string"
+        },
+        "horizonte_declarado": {
+          "type": "string"
+        },
+        "supuestos": {
+          "type": "string"
+        },
+        "pendientes_manuales": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "sin_datos_personales": {
+          "type": "boolean",
+          "description": "Quien opera confirma que no escribió datos personales."
+        }
+      }
+    },
+    "etapas_involucradas": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "E0",
+          "E1",
+          "E2",
+          "E3",
+          "E4",
+          "E5",
+          "E6",
+          "E7",
+          "E8"
+        ]
+      },
+      "uniqueItems": true
+    },
+    "respuestas": {
+      "type": "object",
+      "description": "Clave: id de pregunta del banco.",
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "estado"
+        ],
+        "properties": {
+          "estado": {
+            "enum": [
+              "investigado",
+              "pendiente",
+              "no_aplica"
+            ]
+          },
+          "nota": {
+            "type": "string"
+          },
+          "procedencia": {
+            "enum": [
+              "humano",
+              "ia_aceptada",
+              "ia_corregida",
+              "ia_rechazada"
+            ],
+            "default": "humano",
+            "description": "Procedencia de la etiqueta: puesta por una persona; propuesta de IA aceptada sin cambio; propuesta de IA corregida por la persona; propuesta de IA rechazada. El sitio actual no usa IA, así que todo es «humano»."
+          }
+        }
+      }
+    },
+    "segmentos": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "referencia": {
+            "type": "string"
+          },
+          "extracto": {
+            "type": "string"
+          },
+          "funcion_autor": {
+            "enum": [
+              "",
+              "E0",
+              "E1",
+              "E2",
+              "E3",
+              "E4",
+              "E5",
+              "E6",
+              "E7",
+              "E8",
+              "otra"
+            ]
+          },
+          "tratamiento": {
+            "enum": [
+              "",
+              "E0",
+              "E1",
+              "E2",
+              "E3",
+              "E4",
+              "E5",
+              "E6",
+              "E7",
+              "E8",
+              "ninguno"
+            ]
+          },
+          "nota": {
+            "type": "string"
+          },
+          "procedencia_funcion": {
+            "enum": [
+              "humano",
+              "ia_aceptada",
+              "ia_corregida",
+              "ia_rechazada"
+            ],
+            "default": "humano",
+            "description": "Procedencia de la etiqueta: puesta por una persona; propuesta de IA aceptada sin cambio; propuesta de IA corregida por la persona; propuesta de IA rechazada. El sitio actual no usa IA, así que todo es «humano»."
+          },
+          "procedencia_tratamiento": {
+            "enum": [
+              "humano",
+              "ia_aceptada",
+              "ia_corregida",
+              "ia_rechazada"
+            ],
+            "default": "humano",
+            "description": "Procedencia de la etiqueta: puesta por una persona; propuesta de IA aceptada sin cambio; propuesta de IA corregida por la persona; propuesta de IA rechazada. El sitio actual no usa IA, así que todo es «humano»."
+          }
+        }
+      }
+    },
+    "pendientes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Calculado al exportar: respuestas pendientes más pendientes manuales."
+    },
+    "avisos": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "mensaje": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Calculado al exportar. Son avisos de validación, no una nota."
+    }
+  },
+  "additionalProperties": true
+}

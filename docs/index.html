@@ -1,0 +1,745 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ficha de caso E0–E8</title>
+<meta name="description" content="Guía de método con ficha de caso y mapa de lagunas para el ciclo E0–E8. Funciona en su navegador, sin cuentas ni servidor.">
+<style>
+/* Concepto: cuaderno de trabajo con barra lateral de pasos y un informe que se imprime solo. */
+:root{
+  --bg:#f1f4f3; --surface:#ffffff; --surface-2:#e8edeb; --fg:#15221f; --muted:#546560; --line:#cdd7d3;
+  --accent:#0b6b63; --accent-fg:#ffffff; --accent-soft:#d6ebe7;
+  --t:#8a4b00; --t-bg:#f9e9d2; --l:#2c4a9a; --l-bg:#dfe6f7; --e:#6a3d8f; --e-bg:#ece1f5;
+  --ok:#1f7a45; --ok-bg:#d9efe2; --warn:#8a5a00; --warn-bg:#faedc9; --bad:#a1332b; --bad-bg:#f6dad7;
+  --font-display:Charter,"Iowan Old Style","Palatino Linotype",Georgia,serif;
+  --font-body:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --font-mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0e1514; --surface:#162120; --surface-2:#1e2c2a; --fg:#e3ebe9; --muted:#97aaa5; --line:#2c3d3a;
+  --accent:#5cc8bc; --accent-fg:#06211e; --accent-soft:#17383a;
+  --t:#f0b668; --t-bg:#3a2a12; --l:#9db4f2; --l-bg:#1b2747; --e:#cfa8ee; --e-bg:#2c1d3b;
+  --ok:#74d39a; --ok-bg:#15331f; --warn:#f0c668; --warn-bg:#392c0e; --bad:#f19a92; --bad-bg:#3d1b18; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0e1514; --surface:#162120; --surface-2:#1e2c2a; --fg:#e3ebe9; --muted:#97aaa5; --line:#2c3d3a;
+  --accent:#5cc8bc; --accent-fg:#06211e; --accent-soft:#17383a;
+  --t:#f0b668; --t-bg:#3a2a12; --l:#9db4f2; --l-bg:#1b2747; --e:#cfa8ee; --e-bg:#2c1d3b;
+  --ok:#74d39a; --ok-bg:#15331f; --warn:#f0c668; --warn-bg:#392c0e; --bad:#f19a92; --bad-bg:#3d1b18; color-scheme:dark}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.55 var(--font-body)}
+h1,h2,h3{font-family:var(--font-display);line-height:1.2;text-wrap:balance;margin:0}
+h2{font-size:1.5rem}
+h3{font-size:1.1rem}
+p{margin:0}
+a{color:var(--accent)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+button,input,select,textarea{font:inherit;color:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:max(16px,env(safe-area-inset-left,0px)) max(16px,env(safe-area-inset-right,0px))}
+header.top{border-bottom:1px solid var(--line);background:var(--surface)}
+header.top .wrap{display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center;justify-content:space-between;padding-block:14px}
+.brand{min-width:0}
+.brand h1{font-size:1.35rem}
+.brand p{color:var(--muted);font-size:.9rem}
+.tools{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.chip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);border-radius:999px;padding:2px 10px;font-size:.82rem;background:var(--surface-2);color:var(--muted)}
+.chip.mono{font-family:var(--font-mono)}
+.btn{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--surface);border-radius:6px;padding:7px 14px;cursor:pointer;min-height:38px}
+.btn:hover{border-color:var(--accent)}
+.btn.primary{background:var(--accent);color:var(--accent-fg);border-color:var(--accent)}
+.btn.small{padding:3px 10px;min-height:30px;font-size:.88rem}
+.btn.danger{color:var(--bad)}
+.banner{border-bottom:1px solid var(--line);background:var(--warn-bg);color:var(--fg);font-size:.92rem}
+.banner .wrap{padding-block:8px;display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center}
+.banner.ejemplo{background:var(--accent-soft)}
+.layout{display:grid;grid-template-columns:230px minmax(0,1fr);gap:32px;padding-block:24px 48px}
+nav.steps{position:sticky;top:12px;align-self:start;display:flex;flex-direction:column;gap:4px}
+nav.steps a{display:flex;justify-content:space-between;gap:8px;align-items:center;padding:9px 12px;border-radius:6px;text-decoration:none;color:var(--fg);border:1px solid transparent}
+nav.steps a:hover{background:var(--surface-2)}
+nav.steps a[aria-current="page"]{background:var(--surface);border-color:var(--line);box-shadow:inset 3px 0 0 var(--accent);font-weight:600}
+nav.steps .badge{font-size:.78rem;font-family:var(--font-mono);color:var(--muted)}
+main{min-width:0}
+section.panel{display:none;flex-direction:column;gap:20px}
+section.panel.on{display:flex}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:18px}
+.card.soft{background:var(--surface-2)}
+.lead{color:var(--muted);max-width:68ch}
+.levels{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.levels div{border:1px solid var(--line);border-radius:6px;padding:10px 12px;background:var(--surface)}
+.levels b{font-family:var(--font-mono)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px 18px}
+.grid .wide{grid-column:1/-1}
+label.f{display:flex;flex-direction:column;gap:4px;min-width:0}
+label.f>span{font-weight:600;font-size:.92rem}
+label.f small,.hint{color:var(--muted);font-size:.85rem}
+input[type=text],input[type=date],select,textarea{width:100%;border:1px solid var(--line);background:var(--bg);border-radius:6px;padding:8px 10px;min-width:0}
+textarea{resize:vertical;min-height:84px}
+details.terms summary{cursor:pointer;font-weight:600}
+details.terms ul{margin:10px 0 0;padding-left:20px;display:flex;flex-direction:column;gap:6px}
+.etapas{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.etapa-opt{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);border-radius:8px;padding:10px 12px;background:var(--surface);cursor:pointer}
+.etapa-opt:has(input:checked){border-color:var(--accent);background:var(--accent-soft)}
+.etapa-opt input{margin-top:4px;accent-color:var(--accent)}
+.etapa-opt b{display:block}
+.etapa-opt small{color:var(--muted)}
+.grupo{display:flex;flex-direction:column;gap:12px}
+.grupo>h3{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:baseline}
+.grupo>h3 small{font-family:var(--font-body);font-size:.85rem;color:var(--muted);font-weight:400}
+.preg{border:1px solid var(--line);border-radius:8px;background:var(--surface);padding:14px;display:flex;flex-direction:column;gap:10px}
+.preg-top{display:flex;gap:10px;align-items:flex-start}
+.preg-id{font-family:var(--font-mono);font-size:.8rem;color:var(--muted);flex:none;padding-top:3px}
+.preg-text{min-width:0;flex:1}
+.tag{display:inline-flex;align-items:center;border-radius:4px;padding:0 7px;font-family:var(--font-mono);font-size:.78rem;font-weight:700;flex:none}
+.tag.T{background:var(--t-bg);color:var(--t)}
+.tag.L{background:var(--l-bg);color:var(--l)}
+.tag.E{background:var(--e-bg);color:var(--e)}
+.noaud{font-size:.78rem;border:1px dashed var(--muted);border-radius:4px;padding:0 6px;color:var(--muted)}
+.formal{font-size:.82rem;color:var(--muted)}
+.seg{display:flex;flex-wrap:wrap;gap:6px}
+.seg label{position:relative}
+.seg input{position:absolute;opacity:0;inset:0;width:100%;height:100%;margin:0;cursor:pointer}
+.seg span{display:inline-block;border:1px solid var(--line);border-radius:6px;padding:4px 12px;font-size:.9rem;background:var(--bg)}
+.seg input:checked+span.s-investigado{background:var(--ok-bg);border-color:var(--ok);color:var(--ok);font-weight:600}
+.seg input:checked+span.s-pendiente{background:var(--warn-bg);border-color:var(--warn);color:var(--warn);font-weight:600}
+.seg input:checked+span.s-no_aplica{background:var(--surface-2);border-color:var(--muted);font-weight:600}
+.seg input:focus-visible+span{outline:3px solid var(--accent);outline-offset:2px}
+.segcard{border:1px solid var(--line);border-radius:8px;background:var(--surface);padding:14px;display:flex;flex-direction:column;gap:12px}
+.segcard header{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.segcard header b{font-family:var(--font-mono);font-size:.85rem}
+.aviso{display:flex;gap:10px;align-items:flex-start;border-radius:6px;padding:8px 12px;font-size:.9rem;background:var(--warn-bg);color:var(--fg);border-left:4px solid var(--warn)}
+.aviso.info{background:var(--surface-2);border-left-color:var(--muted)}
+.aviso code{font-family:var(--font-mono);font-size:.8rem}
+.tablewrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{border-bottom:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+th{font-size:.8rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+tr.off td{color:var(--muted)}
+.informe{gap:22px}
+.informe h2{font-size:1.6rem}
+.informe .decl{border:2px solid var(--fg);border-radius:8px;padding:14px 16px;display:flex;flex-direction:column;gap:6px;background:var(--surface)}
+.informe dl{display:grid;grid-template-columns:max-content minmax(0,1fr);gap:4px 16px;margin:0}
+.informe dt{color:var(--muted);font-size:.9rem}
+.informe dd{margin:0;white-space:pre-wrap;overflow-wrap:anywhere}
+.informe ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px}
+.informe section{display:flex;flex-direction:column;gap:10px}
+.grafo{width:100%;height:auto;max-width:720px}
+.grafo text{font-family:var(--font-body);fill:var(--fg)}
+.grafo .nodo{stroke:var(--muted);stroke-width:1.5;fill:var(--surface)}
+.grafo .nodo.on{fill:var(--accent);stroke:var(--accent)}
+.grafo text.on{fill:var(--accent-fg);font-weight:700}
+.grafo text.fase{fill:var(--muted);font-size:11px;letter-spacing:.06em}
+.grafo .pend{fill:var(--warn);stroke:var(--surface);stroke-width:2}
+.grafo text.pendn{fill:var(--surface);font-size:11px;font-weight:700}
+.grafo .ar{fill:none;stroke-width:1.6}
+.grafo .ah{stroke:none}
+.arc-0{stroke:var(--line)}.arc-1{stroke:var(--muted);stroke-dasharray:4 3}.arc-2{stroke:var(--accent);stroke-width:2.2}
+.ah-0{fill:var(--line)}.ah-1{fill:var(--muted)}.ah-2{fill:var(--accent)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:.85rem;color:var(--muted)}
+.exp{display:flex;flex-wrap:wrap;gap:10px}
+.msg{font-size:.9rem;min-height:1.4em}
+textarea.out{font-family:var(--font-mono);font-size:.82rem;min-height:220px}
+footer.pie{border-top:1px solid var(--line);padding-block:20px;color:var(--muted);font-size:.88rem}
+footer.pie .wrap{display:flex;flex-direction:column;gap:6px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+@media (max-width:820px){
+  .layout{grid-template-columns:minmax(0,1fr);gap:16px}
+  nav.steps{position:static;flex-direction:row;overflow-x:auto;padding-bottom:4px}
+  nav.steps a{white-space:nowrap}
+  .informe dl{grid-template-columns:minmax(0,1fr)}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+@media print{
+  body{background:#fff;color:#000;font-size:11pt}
+  header.top,.banner,nav.steps,footer.pie,section.panel:not(#p-mapa){display:none!important}
+  .layout{display:block;padding:0}
+  section#p-mapa{display:flex!important}
+  .no-print{display:none!important}
+  .tablewrap{overflow:visible}
+  .informe .decl,.card,.preg{break-inside:avoid}
+  .grafo text{fill:#000}.grafo .nodo.on{fill:#0b6b63}.grafo text.on{fill:#fff}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <div class="brand">
+      <h1>Ficha de caso E0–E8</h1>
+      <p>Guía de método con mapa de lagunas. Etapa 1 del plan: sitio estático.</p>
+    </div>
+    <div class="tools">
+      <span class="chip mono" id="chip-ver" title="Versiones que lleva cada ficha"></span>
+      <span class="chip" id="chip-save" aria-live="polite">Sin guardar</span>
+      <button class="btn small" id="btn-tema" type="button">Tema claro/oscuro</button>
+    </div>
+  </div>
+</header>
+<div class="banner"><div class="wrap">
+  <b>Guía de método, no oráculo.</b>
+  <span>El informe no juzga la calidad ni la ortodoxia de un texto y no da nota ni puntuación. «Verificado en Lean» no significa «auditado».</span>
+</div></div>
+<div class="banner ejemplo" id="banner-ejemplo" hidden><div class="wrap">
+  <b>Caso de ejemplo.</b><span>Son datos inventados para mostrar cómo funciona la herramienta.</span>
+  <button class="btn small" id="btn-blanco" type="button">Empezar en blanco</button>
+</div></div>
+
+<div class="wrap layout">
+  <nav class="steps" aria-label="Pasos" id="nav"></nav>
+  <main id="main">
+    <section class="panel" id="p-ficha" aria-labelledby="h-ficha"></section>
+    <section class="panel" id="p-ruta-a" aria-labelledby="h-ruta-a"></section>
+    <section class="panel" id="p-ruta-b" aria-labelledby="h-ruta-b"></section>
+    <section class="panel informe" id="p-mapa" aria-labelledby="h-mapa"></section>
+    <section class="panel" id="p-exportar" aria-labelledby="h-exportar"></section>
+  </main>
+</div>
+<footer class="pie"><div class="wrap">
+  <span>Los datos de la ficha se quedan en este navegador. El sitio no usa cuentas, servidor, IA ni recursos externos.</span>
+  <span>© 2026 Miguel Ángel Vega Ochoa. Todos los derechos reservados, con permiso académico (ver LICENCIAS.md del repositorio). Repositorio: <a href="https://github.com/MiguelE1-E8/estructuralismo-teologico" rel="noopener">MiguelE1-E8/estructuralismo-teologico</a> · DOI <a id="lnk-doi" href="#" rel="noopener"></a></span>
+</div></footer>
+
+<script id="data-banco" type="application/json">{"version": "0.1.0-borrador", "estado": "Borrador sin probar en un documento. La compuerta de la etapa 0 a la 1 exige la tabla de leyes con preguntas probadas.", "etiquetas": {"T": "Texto de Lonergan (con página)", "L": "Lectura formal propia", "E": "Estipulación de modelado"}, "licencia": "Todos los derechos reservados, con permiso académico", "etapas": [{"id": "E0", "nombre": "Inventario de datos", "fase": 0, "guia": "¿Qué datos hay y de dónde salen?"}, {"id": "E1", "nombre": "Investigación", "fase": 1, "guia": "¿Qué datos hacen falta para responder la cuestión?"}, {"id": "E2", "nombre": "Interpretación", "fase": 1, "guia": "¿Qué quiso decir el texto o el autor?"}, {"id": "E3", "nombre": "Historia", "fase": 1, "guia": "¿Qué estaba pasando y cómo se llegó a esto?"}, {"id": "E4", "nombre": "Dialéctica", "fase": 1, "guia": "¿En qué discrepan las posiciones y por qué?"}, {"id": "E5", "nombre": "Fundamentos", "fase": 2, "guia": "¿Desde qué horizonte se habla?"}, {"id": "E6", "nombre": "Doctrinas", "fase": 2, "guia": "¿Qué se afirma como doctrina?"}, {"id": "E7", "nombre": "Sistemática", "fase": 2, "guia": "¿Cómo se entiende y se ordena lo afirmado?"}, {"id": "E8", "nombre": "Comunicaciones", "fase": 2, "guia": "¿Cómo se comunica a otros?"}], "preguntas": [{"id": "E0-1", "etapa": "E0", "texto": "¿Se listaron los datos de partida (textos, testimonios, cifras) con su procedencia?", "etiqueta": "E", "auditable": true, "formal": "Inventario previo de datos (E0)", "ayuda": "Registre en la nota dónde está ese inventario o qué falta."}, {"id": "E0-2", "etapa": "E0", "texto": "¿El inventario separa lo observado de lo interpretado?", "etiqueta": "L", "auditable": true, "ayuda": "Una cifra o una cita es un dato; la lectura que se hace de ella pertenece a otra etapa."}, {"id": "E1-1", "etapa": "E1", "texto": "¿Cada cuestión que el texto investiga está formulada de manera explícita?", "etiqueta": "L", "auditable": true, "formal": "E1: cuestiones (Q1)"}, {"id": "E1-2", "etapa": "E1", "texto": "¿Se indica el área de datos considerada y lo que queda fuera de ella?", "etiqueta": "L", "auditable": true, "formal": "E1: área (Ad)"}, {"id": "E1-3", "etapa": "E1", "texto": "¿Los datos citados son accesibles y comprobables por otro lector?", "etiqueta": "L", "auditable": true, "formal": "E1: datos"}, {"id": "E1-4", "etapa": "E1", "texto": "¿El texto reconoce los datos que le faltan?", "etiqueta": "L", "auditable": true, "formal": "E1: vacíos (K)", "ayuda": "Un vacío reconocido es una laguna declarada, no una falla."}, {"id": "E2-1", "etapa": "E2", "texto": "¿Cada lectura de una fuente remite a la evidencia que la sostiene?", "etiqueta": "L", "auditable": true, "formal": "E2: evidencia (Ev) y compatibilidad (Em, Ea, Er)"}, {"id": "E2-2", "etapa": "E2", "texto": "¿Se distingue lo que el autor de la fuente tenía en mente de lo que el intérprete entiende?", "etiqueta": "L", "auditable": true, "formal": "E2: m* (autor) frente a m (intérprete)"}, {"id": "E2-3", "etapa": "E2", "texto": "¿Quedan cuestiones de interpretación pendientes? ¿Piden datos que aún no se tienen?", "etiqueta": "L", "auditable": true, "formal": "E2: cuestiones pendientes (Pend)", "ayuda": "Si piden más datos, el modelo permite el retorno a E1 (relación Pide)."}, {"id": "E2-4", "etapa": "E2", "texto": "¿Se declara cuán cierta es cada lectura?", "etiqueta": "L", "auditable": true, "formal": "E2: juicio (Jz); Jz = cierto equivale a Pend vacío", "ayuda": "Una lectura cierta no deja cuestiones pendientes."}, {"id": "E3-1", "etapa": "E3", "texto": "¿Cada fuente se sitúa con autor, lugar y momento?", "etiqueta": "E", "auditable": true, "formal": "E3: autor, lugar, momento (Ag × Lg × Iv)", "ayuda": "Decisión de modelado aceptada el 18-oct: la fuente lleva los tres."}, {"id": "E3-2", "etapa": "E3", "texto": "¿Se distingue lo que ocurrió de lo que las fuentes dicen que ocurrió?", "etiqueta": "L", "auditable": true, "formal": "E3: movimiento histórico frente a fuentes"}, {"id": "E3-3", "etapa": "E3", "texto": "¿Las cuestiones históricas planteadas indican qué cuestiones de investigación inducen?", "etiqueta": "L", "auditable": true, "formal": "E3 → E1: cuestiones (Qint)"}, {"id": "E3-4", "etapa": "E3", "texto": "Si el texto narra un proceso de progreso o de decadencia, ¿señala cómo ocurre?", "etiqueta": "L", "auditable": true, "formal": "E3: proceso de decadencia (caso Typos); CicloDeclive"}, {"id": "E4-1", "etapa": "E4", "texto": "¿Se identifican de manera explícita las discrepancias entre autores o posiciones?", "etiqueta": "L", "auditable": true, "formal": "E4: discrepancias (Dsc)"}, {"id": "E4-2", "etapa": "E4", "texto": "¿Se distingue si cada discrepancia viene de los datos, de la interpretación o del horizonte de quien la sostiene?", "etiqueta": "L", "auditable": true, "formal": "E4: clasificación; discrepancia de horizonte"}, {"id": "E4-3", "etapa": "E4", "texto": "¿El conflicto se explicita hasta los fundamentos, es decir, hasta el horizonte que lo explica?", "etiqueta": "L", "auditable": true, "formal": "E4 → E5"}, {"id": "E4-4", "etapa": "E4", "texto": "¿Las posiciones y contraposiciones se reclasifican a la luz de un horizonte declarado?", "etiqueta": "L", "auditable": true, "formal": "E4: reclasificación (Pos / Contra)"}, {"id": "E5-1", "etapa": "E5", "texto": "¿Quien opera declara el horizonte desde el que habla?", "etiqueta": "E", "auditable": false, "formal": "E5: horizonte", "ayuda": "No es un dato del texto: lo declara quien usa la herramienta. Escríbalo en la ficha y use la nota para remitir a él."}, {"id": "E5-2", "etapa": "E5", "texto": "¿La conversión que el texto presupone (intelectual, moral, religiosa) está dicha y no solo supuesta?", "etiqueta": "L", "auditable": true, "formal": "E5: horizonte con conversión plena"}, {"id": "E5-3", "etapa": "E5", "texto": "¿El horizonte declarado es coherente con el perfil de posición que el texto usa en la dialéctica?", "etiqueta": "L", "auditable": true, "formal": "E5 ↔ E4: perfil de horizonte (pf) y perfil de posición (Pc)"}, {"id": "E6-1", "etapa": "E6", "texto": "¿Las afirmaciones doctrinales se separan de las hipótesis y de las opiniones, y cada una remite a una posición declarada?", "etiqueta": "L", "auditable": true, "formal": "E6: doctrinas establecidas"}, {"id": "E6-2", "etapa": "E6", "texto": "¿Alguna afirmación pasa por doctrina sin posición que la sostenga?", "etiqueta": "L", "auditable": true, "formal": "E6: contraposición sin doctrina establecida"}, {"id": "E6-3", "etapa": "E6", "texto": "¿Se declara desde dónde afirma quien opera?", "etiqueta": "E", "auditable": false, "formal": "E6", "ayuda": "Declaración de quien opera, no correlato observable en un texto."}, {"id": "E7-1", "etapa": "E7", "texto": "¿Se indican las cuestiones que la sistematización deja sin respuesta?", "etiqueta": "L", "auditable": true, "formal": "E7: cuestiones sin respuesta (Cqs / Cps / Orr)"}, {"id": "E7-2", "etapa": "E7", "texto": "¿Cada término técnico está definido y se usa con ese sentido en todo el texto?", "etiqueta": "L", "auditable": true, "formal": "E7: términos y relaciones"}, {"id": "E7-3", "etapa": "E7", "texto": "¿Los términos y relaciones propuestos son coherentes con las doctrinas que el texto afirma?", "etiqueta": "L", "auditable": true, "formal": "E7 ↔ E6"}, {"id": "E8-1", "etapa": "E8", "texto": "¿Se indica a quién se comunica el contenido y en qué lugar o medio?", "etiqueta": "L", "auditable": true, "formal": "E8: lugares de comunicación (Lug)"}, {"id": "E8-2", "etapa": "E8", "texto": "Al adaptar el mensaje, ¿se señala qué se conserva y qué cambia respecto de lo sistematizado y de lo doctrinal?", "etiqueta": "L", "auditable": true, "formal": "E8 → E7"}, {"id": "E8-3", "etapa": "E8", "texto": "¿Se prevé qué respuesta de los destinatarios volverá a la investigación?", "etiqueta": "E", "auditable": true, "formal": "Cierre externo del modelo conjunto", "ayuda": "El cierre externo solo amplía los datos. Es una estipulación de modelado."}, {"id": "X-1", "etapa": "X", "texto": "¿El texto muestra que la interpretación señala qué datos faltan y que los datos reunidos acotan qué lecturas son posibles?", "etiqueta": "T", "auditable": true, "formal": "E2 ↔ E1 (retornos y adelante)", "ayuda": "La pregunta operacionaliza la dependencia recíproca; la operacionalización es lectura propia [L].", "fuente": "Lonergan, Método en teología, p. 140 (paginación de la edición del Project; reconciliar con la edición que se cite)", "activa_si": {"todas": ["E1", "E2"]}}, {"id": "X-2", "etapa": "X", "texto": "Cuando doctrinas, sistemática o comunicación reorientan la investigación, ¿los resultados siguen apelando a los datos?", "etiqueta": "T", "auditable": true, "formal": "Retornos hacia E1: solo tocan Q1, Ad, K", "ayuda": "La regla de qué toca cada retorno es estipulación [E]; lo que dice Lonergan es que la fase 1 no pierde su apertura.", "fuente": "Lonergan, Método en teología, pp. 141-142 (paginación de la edición del Project)", "activa_si": {"todas": ["E1"], "alguna": ["E5", "E6", "E7", "E8"]}}, {"id": "X-3", "etapa": "X", "texto": "¿Se muestra la relación entre la doctrina afirmada y su historia?", "etiqueta": "T", "auditable": true, "formal": "E6 ↔ E3 (arista cruzada)", "ayuda": "Doctrinas e historia doctrinal son un par de interdependencia en Lonergan.", "fuente": "Lonergan, Método en teología, p. 142 (paginación de la edición del Project)", "activa_si": {"todas": ["E3", "E6"]}}, {"id": "X-4", "etapa": "X", "texto": "¿Se muestra la relación entre el horizonte declarado y las discrepancias que ese horizonte ordena?", "etiqueta": "T", "auditable": true, "formal": "E5 ↔ E4 (arista cruzada)", "ayuda": "Fundamentos y dialéctica son el otro par de interdependencia.", "fuente": "Lonergan, Método en teología, p. 142 (paginación de la edición del Project)", "activa_si": {"todas": ["E4", "E5"]}}]}</script>
+<script id="data-versiones" type="application/json">{"esquema": "ficha-caso/0.2.0", "sitio": "0.2.0", "repositorio": "v0.1.0", "doi": "10.5281/zenodo.23697821", "doi_todas_las_versiones": "10.5281/zenodo.23697770", "lean": "leanprover/lean4:v4.22.0", "etapas": {"E0": "v0.1.0", "E1": "v0.1.0", "E2": "v0.1.0", "E3": "v0.1.0", "E4": "v0.1.0", "E5": "v0.1.0", "E6": "v0.1.0", "E7": "v0.1.0", "E8": "v0.1.0"}, "banco_preguntas": "0.1.0-borrador"}</script>
+<script id="data-reglas" type="application/json">{"generado_por": "tools/EmitReglas.lean", "lean": "4.22.0", "commit": "54e6474", "doi": "10.5281/zenodo.23697821", "alcance": "Lo que Lean calcula o comprueba sobre el modelo. No dice que la interfaz este verificada en Lean. Las reglas de pantalla estan en reglas_interfaz.json [E].", "conexo": true, "resumen": {"aristas": 17, "criticas": 9, "redundantes": 8}, "aristas": [{"de": "E1", "a": "E2", "tipo": "adelante", "estado_formalizacion": "por_formalizar", "critica": true, "redundante": false}, {"de": "E2", "a": "E3", "tipo": "adelante", "estado_formalizacion": "formal", "critica": true, "redundante": false}, {"de": "E3", "a": "E4", "tipo": "adelante", "estado_formalizacion": "formal", "critica": true, "redundante": false}, {"de": "E4", "a": "E5", "tipo": "adelante", "estado_formalizacion": "formal", "critica": true, "redundante": false}, {"de": "E5", "a": "E6", "tipo": "adelante", "estado_formalizacion": "formal", "critica": true, "redundante": false}, {"de": "E6", "a": "E7", "tipo": "adelante", "estado_formalizacion": "formal", "critica": true, "redundante": false}, {"de": "E7", "a": "E8", "tipo": "adelante", "estado_formalizacion": "formal", "critica": true, "redundante": false}, {"de": "E2", "a": "E1", "tipo": "retorno", "estado_formalizacion": "anotada", "critica": false, "redundante": true}, {"de": "E3", "a": "E1", "tipo": "retorno", "estado_formalizacion": "por_formalizar", "critica": false, "redundante": true}, {"de": "E3", "a": "E2", "tipo": "retorno", "estado_formalizacion": "parcial", "critica": false, "redundante": true}, {"de": "E4", "a": "E2", "tipo": "retorno", "estado_formalizacion": "por_formalizar", "critica": false, "redundante": true}, {"de": "E4", "a": "E3", "tipo": "retorno", "estado_formalizacion": "por_formalizar", "critica": false, "redundante": true}, {"de": "E8", "a": "E7", "tipo": "retorno", "estado_formalizacion": "por_formalizar", "critica": true, "redundante": false}, {"de": "E7", "a": "E6", "tipo": "retorno", "estado_formalizacion": "anotada", "critica": true, "redundante": false}, {"de": "E6", "a": "E5", "tipo": "retorno", "estado_formalizacion": "por_formalizar", "critica": false, "redundante": true}, {"de": "E6", "a": "E3", "tipo": "retorno", "estado_formalizacion": "por_formalizar", "critica": false, "redundante": true}, {"de": "E5", "a": "E4", "tipo": "retorno", "estado_formalizacion": "por_formalizar", "critica": false, "redundante": true}], "retornos_a_E1": {"amplia": ["Q1 (cuestiones)", "Ad (area adoptada)", "K (datos que la teologia necesita)"], "no_toca": ["D1 de las cuestiones anteriores", "G (datos reunidos)"], "teoremas": ["Ciclo.fase1_abierta", "Ciclo.fase1_no_pierde", "CicloB.ExtE1"]}, "libro_de_cuentas": [{"enlace": "E3->E4", "teorema": "Ciclo.N.nicea_enlace_independiente", "modulo": "CicloF2", "excluye": "un E4 que cumple su ley y no recoge las incompatibilidades de E3"}, {"enlace": "E8->E7", "teorema": "Ciclo.retorno87_nicea_excluye", "modulo": "CicloF2", "excluye": "un problema planteado sin cuestion pendiente en la sistematica"}, {"enlace": "E7->E6", "teorema": "Ciclo.retorno76_nicea_excluye_sA", "modulo": "CicloF2", "excluye": "emplear en doctrinas un sistema no adecuado (s_A)"}, {"enlace": "E5->E4", "teorema": "Ciclo.retorno54_nicea_cubre_necesaria", "modulo": "CicloF2", "excluye": "una familia de E4 sin cobertura de los perfiles"}, {"enlace": "E6->E3", "teorema": "Ciclo.retorno63_nicea_dominio", "modulo": "CicloF2", "excluye": "doctrinas fuera del dominio de las aprehendidas"}, {"enlace": "E6->E5", "teorema": "Ciclo.retorno65_nicea_excluye_inaut", "modulo": "CicloF2", "excluye": "dimension doctrinal en un horizonte inautentico"}, {"enlace": "E2->E1, E3->E1", "teorema": "Ciclo.CicloB.yMalD_no_ext / yMalG_no_ext / yMalK_no_ext", "modulo": "CicloF2", "excluye": "estrechar D1, cambiar G o encoger K"}, {"enlace": "E4->E2, E4->E3", "teorema": "Ciclo.CicloB.clasif_mala_excluida", "modulo": "CicloF2", "excluye": "perfil que contradice car"}, {"enlace": "E3->E2", "teorema": "Ciclo.CicloB.contexto_mal_excluido", "modulo": "CicloF2", "excluye": "ub que no sale de a"}, {"enlace": "E1->E2", "teorema": "Ciclo.CicloB.comp_creciente_excluida", "modulo": "CicloF2", "excluye": "compatibilidad no antitona"}], "contraejemplos_de_un_caso": [{"teorema": "Ciclo.N.NY2_no_ley", "modulo": "CicloF4b", "alcance": "un caso (Nicea): tras reclasificar un punto de vista en E4, el E6 anterior no cumple su ley (L12)"}, {"teorema": "Ciclo.N.NY4_no_ley", "modulo": "CicloF6", "alcance": "un caso (Nicea): E6 sobre un E4 en declive no cumple su ley"}, {"teorema": "Ciclo.paso_depende_de_E4", "modulo": "CicloF4", "alcance": "con los mismos datos, un paso es admisible desde un estado y no desde otro"}, {"teorema": "Ciclo.N.giro2_no_es_paso", "modulo": "CicloF5", "alcance": "en el caso Nicea, el giro de correccion no es un paso del tipo acumulativo"}]}</script>
+<script>
+"use strict";
+const BANCO = JSON.parse(document.getElementById("data-banco").textContent);
+const VERS = JSON.parse(document.getElementById("data-versiones").textContent);
+const KEY = "ficha-caso-0.1";
+const PROCS = ["humano","ia_aceptada","ia_corregida","ia_rechazada"];
+const PROC_TXT = {humano:"Puesta por una persona",ia_aceptada:"Propuesta de IA aceptada sin cambio",ia_corregida:"Propuesta de IA corregida",ia_rechazada:"Propuesta de IA rechazada"};
+const ESTADOS = [["investigado","Investigado"],["pendiente","Pendiente"],["no_aplica","No aplica"]];
+const CERTEZAS = [["sin_valorar","Sin valorar"],["provisional","Provisional"],["probable","Probable"],["establecida","Establecida"]];
+const PASOS = [["ficha","Ficha"],["ruta-a","Ruta A · preguntas"],["ruta-b","Ruta B · segmentos"],["mapa","Mapa de lagunas"],["exportar","Exportar"]];
+// Aristas «A influye en B» del grafo del modelo conjunto (Ciclo.lean). Nodos 1..8 = E1..E8. Son permisos, no flujos obligatorios.
+const REGLAS = JSON.parse(document.getElementById("data-reglas").textContent); // generado desde Lean (tools/EmitReglas.lean); ya no se escribe a mano
+const NUM = e => +e.slice(1);
+const ADELANTE = REGLAS.aristas.filter(r=>r.tipo==="adelante").map(r=>[NUM(r.de),NUM(r.a)]);
+const RETORNO = REGLAS.aristas.filter(r=>r.tipo==="retorno").map(r=>[NUM(r.de),NUM(r.a)]);
+const PII = [
+  [/[\w.+-]+@[\w-]+\.[\w.-]+/, "un correo electrónico"],
+  [/(?:\+?\d[\s\-.]?){9,}/, "una secuencia larga de dígitos (¿teléfono o documento?)"],
+  [/\b(c[eé]dula|c\.c\.|nit)\b/i, "la palabra «cédula» o «NIT»"]
+];
+
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const hoy = () => new Date().toISOString().slice(0,10);
+const etapaNombre = id => { const e = BANCO.etapas.find(x => x.id === id); return e ? id + " " + e.nombre : id; };
+const qById = id => BANCO.preguntas.find(q => q.id === id);
+
+function casoVacio(){
+  return {ejemplo:false, caso:{titulo:"",autoria:"",fecha:hoy(),etapa:"",certeza:"sin_valorar",tema:"",horizonte_declarado:"",supuestos:"",pendientes_manuales:"",sin_datos_personales:false}, etapas:[], resp:{}, segs:[]};
+}
+function casoEjemplo(){
+  return {ejemplo:true,
+    caso:{titulo:"EJEMPLO · Artículo ficticio sobre catequesis parroquial",autoria:"(ejemplo)",fecha:hoy(),etapa:"E2",certeza:"establecida",
+      tema:"Un artículo imaginario que propone renovar la catequesis a partir de entrevistas con catequistas.",
+      horizonte_declarado:"",supuestos:"Se supone que las entrevistas representan a toda la parroquia.",
+      pendientes_manuales:"Conseguir las transcripciones completas",sin_datos_personales:true},
+    etapas:["E1","E2","E4","E6"],
+    resp:{
+      "E1-1":{estado:"investigado",nota:"§2 formula la pregunta."},
+      "E1-2":{estado:"pendiente",nota:"No dice cuántas parroquias."},
+      "E2-1":{estado:"investigado",nota:""},
+      "E2-3":{estado:"pendiente",nota:"Falta saber qué entendían los catequistas por «método»."},
+      "E4-1":{estado:"investigado",nota:"§4 contrasta dos enfoques."}},
+    segs:[
+      {id:"S1",referencia:"§2, párr. 1",extracto:"Se entrevistó a doce catequistas…",funcion_autor:"E1",tratamiento:"E2",nota:""},
+      {id:"S2",referencia:"§4",extracto:"Dos enfoques se oponen…",funcion_autor:"E4",tratamiento:"",nota:""}]};
+}
+
+let S = casoVacio();
+let primeraVez = true;
+try{
+  const raw = localStorage.getItem(KEY);
+  if(raw){ const o = JSON.parse(raw); if(o && o.caso && o.resp) { S = o; primeraVez = false; } }
+}catch(e){}
+if(primeraVez) S = casoEjemplo();
+
+let guardarT = null;
+function guardar(){
+  clearTimeout(guardarT);
+  guardarT = setTimeout(() => {
+    let ok = true;
+    try{ localStorage.setItem(KEY, JSON.stringify(S)); }catch(e){ ok = false; }
+    document.getElementById("chip-save").textContent = ok ? "Guardado en este navegador" : "No se pudo guardar en el navegador: exporte el JSON";
+  }, 250);
+}
+
+/* ---------- análisis ---------- */
+function activa(q, set){
+  if(q.etapa !== "X") return set.has(q.etapa);
+  const c = q.activa_si || {};
+  return (c.todas||[]).every(e => set.has(e)) && (!c.alguna || c.alguna.some(e => set.has(e)));
+}
+function preguntasVisibles(){
+  const set = new Set(S.etapas);
+  return BANCO.preguntas.filter(q => activa(q, set));
+}
+function textosLibres(){
+  const c = S.caso, out = [["Ficha · título",c.titulo],["Ficha · tema",c.tema],["Ficha · horizonte",c.horizonte_declarado],["Ficha · supuestos",c.supuestos],["Ficha · pendientes",c.pendientes_manuales]];
+  Object.keys(S.resp).forEach(k => out.push(["Pregunta "+k, S.resp[k].nota]));
+  S.segs.forEach(s => { out.push(["Segmento "+s.id+" · referencia", s.referencia]); out.push(["Segmento "+s.id+" · extracto", s.extracto]); out.push(["Segmento "+s.id+" · nota", s.nota]); });
+  return out;
+}
+function analizar(){
+  const marcadas = new Set(S.etapas);
+  const efect = new Set(S.etapas);
+  const enSeg = new Set();
+  S.segs.forEach(s => [s.funcion_autor, s.tratamiento].forEach(e => { if(/^E[0-8]$/.test(e||"")){ efect.add(e); enSeg.add(e); } }));
+  const vis = preguntasVisibles();
+  const tabla = BANCO.etapas.map(e => {
+    const qs = vis.filter(q => q.etapa === e.id);
+    const c = {inv:0,pend:0,noap:0,sin:0};
+    qs.forEach(q => { const r = S.resp[q.id]; if(!r||!r.estado) c.sin++; else if(r.estado==="investigado") c.inv++; else if(r.estado==="pendiente") c.pend++; else c.noap++; });
+    return {e:e.id, nombre:e.nombre, fase:e.fase, marcada:marcadas.has(e.id), efectiva:efect.has(e.id), total:qs.length, ...c,
+      segF:S.segs.filter(s=>s.funcion_autor===e.id).length, segT:S.segs.filter(s=>s.tratamiento===e.id).length};
+  });
+  const cruz = vis.filter(q => q.etapa === "X");
+  const cx = {inv:0,pend:0,noap:0,sin:0};
+  cruz.forEach(q => { const r = S.resp[q.id]; if(!r||!r.estado) cx.sin++; else if(r.estado==="investigado") cx.inv++; else if(r.estado==="pendiente") cx.pend++; else cx.noap++; });
+  const lagunas = [];
+  vis.forEach(q => { const r = S.resp[q.id]; const est = r && r.estado ? r.estado : "sin_responder"; if(est==="pendiente"||est==="sin_responder") lagunas.push({q, estado:est, nota:r?r.nota:""}); });
+  const avisos = [];
+  const A = (id,msg) => avisos.push({id,msg});
+  const c = S.caso;
+  if(!c.titulo.trim()) A("V-titulo","La ficha no tiene título.");
+  if(!c.supuestos.trim()) A("V-supuestos","La ficha no declara supuestos.");
+  if(!S.etapas.length) A("V-etapas","No hay etapas marcadas en la ruta A.");
+  vis.forEach(q => { const r = S.resp[q.id]; if(r && r.estado==="investigado" && !(r.nota||"").trim()) A("V-ref-"+q.id,"La pregunta "+q.id+" está investigada pero no remite a un segmento ni a una referencia. Escríbala en la nota."); });
+  if(["E5","E6","E7","E8"].some(e => efect.has(e)) && !c.horizonte_declarado.trim()) A("V-horizonte","Hay etapas de la fase 2 (E5–E8) y falta el horizonte declarado. Esas etapas hablan desde el horizonte de quien opera; la herramienta no lo produce.");
+  const pendientes = lagunas.filter(l=>l.estado==="pendiente").length + c.pendientes_manuales.split("\n").filter(x=>x.trim()).length;
+  if(c.certeza==="establecida" && pendientes>0) A("V-certeza","La certeza declarada es «establecida» y hay "+pendientes+" pendiente(s). En E2, una lectura cierta equivale a no tener cuestiones pendientes.");
+  const e2p = (S.resp["E2-3"]||{}).estado==="pendiente" || (S.resp["E2-1"]||{}).estado==="pendiente";
+  if(e2p && !efect.has("E1")) A("V-e2e1","Hay cuestiones pendientes de interpretación (E2) que pueden pedir datos nuevos, y E1 no aparece en la ficha. El modelo permite ese retorno de E2 a E1.");
+  enSeg.forEach(e => { if(!marcadas.has(e)) A("V-seg-"+e, etapaNombre(e)+" aparece en los segmentos y no está marcada en la ruta A, así que no se le hicieron preguntas."); });
+  const sinRef = S.segs.filter(x=>!(x.referencia||"").trim()).map(x=>x.id), sinEtq = S.segs.filter(x=>!x.funcion_autor||!x.tratamiento).map(x=>x.id);
+  const lista = a => a.slice(0,6).join(", ")+(a.length>6?" y "+(a.length-6)+" más":"");
+  if(sinRef.length) A("V-sref",sinRef.length+" segmento(s) sin referencia: "+lista(sinRef)+".");
+  if(sinEtq.length) A("V-setq",sinEtq.length+" segmento(s) sin las dos etiquetas (función que cumple en el autor y tratamiento que se le aplica): "+lista(sinEtq)+".");
+  const pii = [];
+  textosLibres().forEach(([donde,txt]) => { PII.forEach(([re,que]) => { if(txt && re.test(txt)) pii.push(donde+": parece haber "+que); }); });
+  if(pii.length) A("V-pii","Posibles datos personales. "+pii.join(" · ")+". Quite los datos personales de personas y comunidades antes de exportar.");
+  if(!c.sin_datos_personales) A("V-pii-conf","No está confirmado que la ficha carezca de datos personales (casilla en la ficha).");
+  const lig = [];
+  const todas = ADELANTE.map(a=>({a:a[0],b:a[1],t:"adelante"})).concat(RETORNO.map(a=>({a:a[0],b:a[1],t:"retorno"})));
+  todas.forEach(ar => {
+    const A1 = efect.has("E"+ar.a), B1 = efect.has("E"+ar.b);
+    if(A1 && !B1) lig.push("E"+ar.a+" influye en E"+ar.b+" ("+ar.t+"), que no aparece en la ficha.");
+    if(!A1 && B1) lig.push("E"+ar.b+" recibe de E"+ar.a+" ("+ar.t+"), que no aparece en la ficha.");
+  });
+  const proc = {humano:0,ia_aceptada:0,ia_corregida:0,ia_rechazada:0};
+  const cuenta = v => { proc[PROCS.includes(v)?v:"humano"]++; };
+  Object.keys(S.resp).forEach(k => { const r = S.resp[k]; if(r && r.estado && qById(k)) cuenta(r.procedencia); });
+  S.segs.forEach(x => { if(x.funcion_autor) cuenta(x.procedencia_funcion); if(x.tratamiento) cuenta(x.procedencia_tratamiento); });
+  return {proc, efect, marcadas, tabla, cruz:{n:cruz.length,...cx}, lagunas, avisos, lig, pendientes};
+}
+
+/* ---------- vistas ---------- */
+function opcionesEtapa(sel, extra){
+  return '<option value=""'+(sel===""?" selected":"")+'>—</option>' + BANCO.etapas.map(e => '<option value="'+e.id+'"'+(sel===e.id?" selected":"")+'>'+esc(e.id+" "+e.nombre)+'</option>').join("") + (extra||[]).map(([v,l]) => '<option value="'+v+'"'+(sel===v?" selected":"")+'>'+esc(l)+'</option>').join("");
+}
+function vFicha(){
+  const c = S.caso;
+  return `<div><h2 id="h-ficha">Ficha del caso</h2>
+  <p class="lead">Una ficha describe un caso: un texto, una pregunta o un tema que usted quiere ordenar con el ciclo E0–E8. Se llena en pocos minutos y se puede corregir después.</p></div>
+  <div class="card soft"><h3>Qué es y qué no es</h3>
+    <div class="levels" style="margin-top:10px">
+      <div><b>Nivel A</b><br>Guía narrativa: el ciclo explicado y las preguntas por etapa.</div>
+      <div><b>Nivel B</b><br>Ficha con validaciones codificadas. Es lo que produce este sitio.</div>
+      <div><b>Nivel C</b><br>Codificación formal en Lean revisada por un experto. Este sitio no la produce, y por eso nunca dice «verificado en Lean».</div>
+    </div>
+    <p class="hint" style="margin-top:10px">Lean comprueba que los modelos son consistentes. Responder las preguntas de este sitio es interpretación suya, no una verificación.</p>
+  </div>
+  <div class="card"><div class="grid">
+    <label class="f wide"><span>Título del caso</span><input type="text" id="f-titulo" data-f="titulo" value="${esc(c.titulo)}"></label>
+    <label class="f"><span>Autoría de la ficha</span><input type="text" id="f-autoria" data-f="autoria" value="${esc(c.autoria)}"></label>
+    <label class="f"><span>Fecha</span><input type="date" id="f-fecha" data-f="fecha" value="${esc(c.fecha)}"></label>
+    <label class="f"><span>Etapa en que está el trabajo</span><select id="f-etapa" data-f="etapa">${opcionesEtapa(c.etapa)}</select></label>
+    <label class="f"><span>Certeza que declara</span><select id="f-certeza" data-f="certeza">${CERTEZAS.map(([v,l])=>'<option value="'+v+'"'+(c.certeza===v?" selected":"")+'>'+l+'</option>').join("")}</select></label>
+    <label class="f wide"><span>Tema o pregunta</span><textarea id="f-tema" data-f="tema">${esc(c.tema)}</textarea></label>
+    <label class="f wide"><span>Horizonte declarado</span><textarea id="f-horizonte" data-f="horizonte_declarado">${esc(c.horizonte_declarado)}</textarea><small>Desde dónde habla quien opera. Las etapas E5 a E8 lo necesitan y la herramienta no puede escribirlo por usted.</small></label>
+    <label class="f wide"><span>Supuestos</span><textarea id="f-supuestos" data-f="supuestos">${esc(c.supuestos)}</textarea></label>
+    <label class="f wide"><span>Pendientes propios</span><textarea id="f-pend" data-f="pendientes_manuales">${esc(c.pendientes_manuales)}</textarea><small>Uno por línea. Los pendientes de las preguntas se suman solos.</small></label>
+    <label class="f wide" style="flex-direction:row;gap:10px;align-items:flex-start"><input type="checkbox" id="f-pii" data-fc="sin_datos_personales" ${c.sin_datos_personales?"checked":""} style="margin-top:5px;accent-color:var(--accent)"><span style="font-weight:400">Confirmo que esta ficha no contiene datos personales de personas ni de comunidades (nombres, contactos, documentos, ubicaciones identificables).</span></label>
+  </div></div>
+  <details class="card terms"><summary>Términos de uso</summary><ul>
+    <li><b>No dictamina ortodoxia.</b> El informe no es un juicio sobre la calidad ni la ortodoxia de un texto. No hay nota, ranking ni puntuación.</li>
+    <li><b>No es un oráculo.</b> La herramienta ordena, pregunta, valida y señala lagunas. No convierte una pregunta en contenido del ciclo.</li>
+    <li><b>Datos personales.</b> No escriba datos de personas ni de comunidades. El sitio avisa si cree ver alguno, pero no lo garantiza.</li>
+    <li><b>Textos de terceros.</b> Cite solo fragmentos breves, con su referencia, y tenga el permiso que corresponda.</li>
+    <li><b>Datos en su navegador.</b> No hay cuentas ni servidor. Para conservar un caso, exporte el JSON.</li>
+    <li><b>Alcance.</b> El modelo conjunto de las ocho especializaciones es parcial (T0). Este sitio no afirma que la dinámica del ciclo esté demostrada.</li>
+  </ul></details>
+  <div class="exp no-print"><button class="btn primary" type="button" data-go="ruta-a">Siguiente: Ruta A</button></div>`;
+}
+function qHtml(q){
+  const r = S.resp[q.id] || {};
+  return `<div class="preg" id="q-${q.id}">
+    <div class="preg-top"><span class="preg-id">${q.id}</span><div class="preg-text">${esc(q.texto)}</div><span class="tag ${q.etiqueta}" title="${esc(BANCO.etiquetas[q.etiqueta])}">${q.etiqueta}</span></div>
+    ${q.auditable?"":'<div><span class="noaud">No auditable en el texto: registre la declaración de quien opera</span></div>'}
+    ${q.formal?'<div class="formal">Noción formal: '+esc(q.formal)+'</div>':""}
+    ${q.fuente?'<div class="formal">Fuente: '+esc(q.fuente)+'</div>':""}
+    ${q.ayuda?'<div class="hint">'+esc(q.ayuda)+'</div>':""}
+    <fieldset style="border:0;padding:0;margin:0"><legend class="sr">Estado de la pregunta ${q.id}</legend>
+    <div class="seg">${ESTADOS.map(([v,l])=>'<label><input type="radio" name="r-'+q.id+'" data-q="'+q.id+'" data-k="estado" value="'+v+'"'+(r.estado===v?" checked":"")+'><span class="s-'+v+'">'+l+'</span></label>').join("")}
+    <button type="button" class="btn small" data-clear="${q.id}" title="Volver a «sin responder»">Limpiar</button></div></fieldset>
+    <label class="f"><span class="sr">Nota o referencia de ${q.id}</span><input type="text" id="n-${q.id}" data-q="${q.id}" data-k="nota" placeholder="Referencia al segmento o nota (obligatoria si está investigado)" value="${esc(r.nota||"")}"></label>
+  </div>`;
+}
+function vRutaA(){
+  const set = new Set(S.etapas);
+  let h = `<div><h2 id="h-ruta-a">Ruta A · del tema a las preguntas</h2>
+  <p class="lead">Marque las etapas que su tema toca. Cada etapa trae su pregunta guía. Después responda las preguntas de cada una con tres estados: investigado, pendiente o no aplica. Dejar una pregunta sin responder también se cuenta como laguna.</p></div>
+  <div class="aviso info"><span>Las preguntas son un borrador: todavía no se probaron sobre un documento (${esc(BANCO.estado)}). Cada una lleva una etiqueta de atribución.
+  <span class="tag T">T</span> texto de Lonergan <span class="tag L">L</span> lectura formal propia <span class="tag E">E</span> estipulación de modelado.</span></div>
+  <div class="etapas" role="group" aria-label="Etapas involucradas">${BANCO.etapas.map(e=>`<label class="etapa-opt"><input type="checkbox" data-etapa="${e.id}"${set.has(e.id)?" checked":""}><span><b>${esc(e.id+" "+e.nombre)}</b><small>${esc(e.guia)}</small></span></label>`).join("")}</div>`;
+  const vis = preguntasVisibles();
+  if(!S.etapas.length) h += '<div class="card soft">Marque al menos una etapa para ver sus preguntas.</div>';
+  BANCO.etapas.filter(e=>set.has(e.id)).forEach(e => {
+    const qs = vis.filter(q=>q.etapa===e.id);
+    h += `<div class="grupo"><h3>${esc(e.id+" "+e.nombre)} <small>${e.fase===0?"Inventario previo, fuera del modelo conjunto":"Fase "+e.fase}</small></h3>${qs.map(qHtml).join("")}</div>`;
+  });
+  const xs = vis.filter(q=>q.etapa==="X");
+  if(xs.length) h += `<div class="grupo"><h3>Entre etapas <small>Aparecen cuando están marcadas las etapas que relacionan</small></h3>${xs.map(qHtml).join("")}</div>`;
+  h += '<div class="exp no-print"><button class="btn" type="button" data-go="ficha">Anterior</button><button class="btn primary" type="button" data-go="ruta-b">Siguiente: Ruta B</button></div>';
+  return h;
+}
+function segHtml(s,i){
+  return `<div class="segcard"><header><b>${esc(s.id)}</b><button class="btn small danger" type="button" data-delseg="${i}">Quitar</button></header>
+  <div class="grid">
+    <label class="f"><span>Referencia</span><input type="text" id="s${i}-ref" data-seg="${i}" data-k="referencia" placeholder="Página, párrafo o sección" value="${esc(s.referencia)}"></label>
+    <label class="f"><span>Función que cumple en el autor</span><select id="s${i}-fun" data-seg="${i}" data-k="funcion_autor">${opcionesEtapa(s.funcion_autor,[["otra","Otra o no clasificable"]])}</select></label>
+    <label class="f"><span>Tratamiento que se le aplica</span><select id="s${i}-tra" data-seg="${i}" data-k="tratamiento">${opcionesEtapa(s.tratamiento,[["ninguno","Ninguno todavía"]])}</select></label>
+    <label class="f wide"><span>Extracto breve</span><textarea id="s${i}-ext" data-seg="${i}" data-k="extracto" style="min-height:60px">${esc(s.extracto)}</textarea><small>Solo un fragmento corto. Si es de un tercero, cite con referencia y tenga el permiso que corresponda.</small></label>
+    <label class="f wide"><span>Nota</span><input type="text" id="s${i}-nota" data-seg="${i}" data-k="nota" value="${esc(s.nota)}"></label>
+  </div></div>`;
+}
+function vRutaB(){
+  return `<div><h2 id="h-ruta-b">Ruta B · segmentos de un artículo</h2>
+  <p class="lead">Divida el texto en segmentos y póngale dos etiquetas a cada uno: la función que cumple en el autor y el tratamiento que usted le aplica. Con los segmentos, el mapa cuenta qué etapas están presentes.</p></div>
+  <div class="card" id="subida"><h3>Cargar un avance de investigación</h3>
+    <p class="hint" style="margin:6px 0 12px">El texto se parte por párrafos en este navegador y no sale del equipo. No hay IA: usted pone las dos etiquetas de cada segmento. Acepta .txt, .md y .docx. Para un PDF, copie el texto y péguelo.</p>
+    <div class="grid">
+      <label class="f"><span>Archivo</span><input type="file" id="inp-texto" accept=".txt,.md,.docx,text/plain,text/markdown"></label>
+      <label class="f wide"><span>O pegue el texto</span><textarea id="txt-pegado" style="min-height:110px"></textarea></label>
+    </div>
+    <div class="exp" style="margin-top:10px"><button class="btn" type="button" id="btn-partir">Partir el texto pegado</button></div>
+    <div id="subida-res" role="status">${subidaHtml()}</div>
+  </div>
+  <div id="segs" class="grupo">${S.segs.length?S.segs.map(segHtml).join(""):'<div class="card soft">Todavía no hay segmentos. Agregue el primero.</div>'}</div>
+  <div class="exp no-print"><button class="btn" type="button" id="btn-addseg">Agregar segmento</button></div>
+  <div class="exp no-print"><button class="btn" type="button" data-go="ruta-a">Anterior</button><button class="btn primary" type="button" data-go="mapa">Ver el mapa de lagunas</button></div>`;
+}
+
+
+/* ---------- subida local de texto ---------- */
+let subida = null;
+const EXT_MAX = 280, SEG_MAX = 300;
+function subidaHtml(){
+  if(!subida) return "";
+  if(subida.error) return '<div class="aviso" style="margin-top:10px"><span>'+esc(subida.error)+'</span></div>';
+  const n = subida.parrs.length;
+  return '<div class="aviso info" style="margin-top:10px"><span>'+esc(subida.nombre)+": "+n+" segmento(s) propuesto(s) por párrafos"+(subida.recortado?" (se tomaron los primeros "+SEG_MAX+")":"")+"."+(subida.pii?" Atención: "+subida.pii+" párrafo(s) parecen contener datos personales (correo, teléfono o documento). Revíselos antes de seguir.":"")+" Cada extracto se recorta a "+EXT_MAX+" caracteres y no se guarda el texto completo.</span></div>"+
+  '<div class="exp" style="margin-top:10px"><button class="btn primary" type="button" id="btn-crear-segs">Agregar '+n+' segmentos</button><button class="btn" type="button" id="btn-reemp-segs">Reemplazar los segmentos actuales</button><button class="btn" type="button" id="btn-desc-subida">Descartar</button></div>';
+}
+function partir(texto){
+  const ps = String(texto).replace(/\r\n?/g,"\n").split(/\n\s*\n/).map(x=>x.replace(/\s+/g," ").trim()).filter(Boolean);
+  const out = []; let buf = "";
+  ps.forEach(p => { buf = buf ? buf+" "+p : p; if(buf.length>=60){ out.push(buf); buf=""; } });
+  if(buf) out.push(buf);
+  return out;
+}
+async function leerDocx(file){
+  if(typeof DecompressionStream==="undefined") throw new Error("Este navegador no puede abrir .docx. Copie el texto y péguelo.");
+  const buf = await file.arrayBuffer(), dv = new DataView(buf), u8 = new Uint8Array(buf);
+  let eocd = -1; for(let i=buf.byteLength-22;i>=Math.max(0,buf.byteLength-70000);i--){ if(dv.getUint32(i,true)===0x06054b50){ eocd=i; break; } }
+  if(eocd<0) throw new Error("El archivo no parece un .docx válido.");
+  const n = dv.getUint16(eocd+10,true); let o = dv.getUint32(eocd+16,true), hallado = null;
+  for(let k=0;k<n;k++){
+    if(dv.getUint32(o,true)!==0x02014b50) break;
+    const metodo=dv.getUint16(o+10,true), csz=dv.getUint32(o+20,true), nl=dv.getUint16(o+28,true), el=dv.getUint16(o+30,true), cl=dv.getUint16(o+32,true), lo=dv.getUint32(o+42,true);
+    const nombre = new TextDecoder().decode(u8.subarray(o+46,o+46+nl));
+    if(nombre==="word/document.xml") hallado = {metodo,csz,lo};
+    o += 46+nl+el+cl;
+  }
+  if(!hallado) throw new Error("No se encontró el texto del documento dentro del .docx.");
+  const ln = dv.getUint16(hallado.lo+26,true), le = dv.getUint16(hallado.lo+28,true), ini = hallado.lo+30+ln+le;
+  let datos = u8.subarray(ini, ini+hallado.csz);
+  if(hallado.metodo===8){ const ds = new Blob([datos]).stream().pipeThrough(new DecompressionStream("deflate-raw")); datos = new Uint8Array(await new Response(ds).arrayBuffer()); }
+  else if(hallado.metodo!==0) throw new Error("Compresión de .docx no admitida.");
+  const xml = new DOMParser().parseFromString(new TextDecoder().decode(datos),"application/xml");
+  const W = "http://schemas.openxmlformats.org/wordprocessingml/2006/main";
+  const parrs = [...xml.getElementsByTagNameNS(W,"p")].map(p => [...p.getElementsByTagNameNS(W,"t")].map(t=>t.textContent).join(""));
+  return parrs.join("\n\n");
+}
+function prepararSubida(nombre, texto){
+  let parrs = partir(texto), recortado = false;
+  if(!parrs.length){ subida = {error:"No se encontró texto en "+nombre+"."}; return; }
+  if(parrs.length>SEG_MAX){ parrs = parrs.slice(0,SEG_MAX); recortado = true; }
+  const pii = parrs.filter(p => PII.some(([re]) => re.test(p))).length;
+  subida = {nombre, parrs, recortado, pii};
+}
+function mostrarSubida(){ const r = document.getElementById("subida-res"); if(r) r.innerHTML = subidaHtml(); }
+async function cargarArchivoTexto(file){
+  try{
+    const ext = (file.name.split(".").pop()||"").toLowerCase();
+    let texto;
+    if(ext==="docx") texto = await leerDocx(file);
+    else if(["txt","md","markdown"].includes(ext)) texto = await file.text();
+    else throw new Error("Formato no admitido. Use .txt, .md o .docx, o pegue el texto.");
+    prepararSubida(file.name, texto);
+  }catch(e){ subida = {error:e.message}; }
+  mostrarSubida();
+}
+function crearSegmentos(reemplazar){
+  if(!subida || !subida.parrs) return;
+  const base = reemplazar ? [] : S.segs;
+  subida.parrs.forEach((p,i) => base.push({id:"S"+(base.length+1), referencia:"párr. "+(i+1)+" de "+subida.nombre, extracto:p.length>EXT_MAX?p.slice(0,EXT_MAX).trimEnd()+"…":p, funcion_autor:"", tratamiento:"", nota:""}));
+  S.segs = base; S.segs.forEach((x,i)=>{ x.id="S"+(i+1); });
+  subida = null; guardar(); renderPaso("ruta-b", true);
+}
+
+/* grafo */
+const POS = {1:[90,110],2:[240,110],3:[390,110],4:[540,110],5:[540,250],6:[390,250],7:[240,250],8:[90,250]};
+function trim(p,c,r){ const dx=c[0]-p[0],dy=c[1]-p[1],d=Math.hypot(dx,dy)||1; return [p[0]+dx/d*r,p[1]+dy/d*r]; }
+function arista(a,b,tipo,k){
+  const R=22, P=POS[a], Q=POS[b], mismaFila=P[1]===Q[1];
+  const off = (a===4&&b===5) ? -9 : ((a===5&&b===4) ? 9 : 0);
+  const p1=[P[0]+off,P[1]], p2=[Q[0]+off,Q[1]];
+  const curva = mismaFila && tipo==="retorno";
+  let ctl = [(p1[0]+p2[0])/2,(p1[1]+p2[1])/2];
+  if(curva){
+    const span=Math.abs(a-b), dir = P[1]<180 ? -1 : 1;
+    const h = span===1 ? 56 : (a===3 ? 100 : 130);
+    ctl = [ctl[0], ctl[1]+dir*h];
+  }
+  const s=trim(p1,ctl,R), e=trim(p2,ctl,R);
+  const d = curva ? `M${s[0].toFixed(1)} ${s[1].toFixed(1)} Q${ctl[0]} ${ctl[1]} ${e[0].toFixed(1)} ${e[1].toFixed(1)}` : `M${s[0].toFixed(1)} ${s[1].toFixed(1)} L${e[0].toFixed(1)} ${e[1].toFixed(1)}`;
+  const tx=e[0]-(curva?ctl[0]:s[0]), ty=e[1]-(curva?ctl[1]:s[1]), tl=Math.hypot(tx,ty)||1, ux=tx/tl, uy=ty/tl;
+  const L=9, W=4.5, bx=e[0]-ux*L, by=e[1]-uy*L;
+  const head=`M${e[0].toFixed(1)} ${e[1].toFixed(1)} L${(bx-uy*W).toFixed(1)} ${(by+ux*W).toFixed(1)} L${(bx+uy*W).toFixed(1)} ${(by-ux*W).toFixed(1)} Z`;
+  return `<path class="ar arc-${k}" d="${d}"/><path class="ah ah-${k}" d="${head}"/>`;
+}
+function grafoSvg(an){
+  const ef = an.efect;
+  const rank = (a,b)=> (ef.has("E"+a)&&ef.has("E"+b))?2:((ef.has("E"+a)||ef.has("E"+b))?1:0);
+  let s = '<svg class="grafo" viewBox="0 0 640 360" role="img" aria-label="Grafo de las ocho especializaciones. Los nodos coloreados son las etapas presentes en la ficha.">';
+  s += '<text class="fase" x="20" y="22">FASE 1 · E1 a E4</text><text class="fase" x="20" y="348">FASE 2 · E5 a E8</text>';
+  const todas = ADELANTE.map(x=>[x[0],x[1],"adelante"]).concat(RETORNO.map(x=>[x[0],x[1],"retorno"]));
+  todas.sort((x,y)=>rank(x[0],x[1])-rank(y[0],y[1])).forEach(([a,b,t]) => { s += arista(a,b,t,rank(a,b)); });
+  for(let i=1;i<=8;i++){
+    const [x,y]=POS[i], on=ef.has("E"+i), row=an.tabla.find(r=>r.e==="E"+i);
+    s += `<circle class="nodo${on?" on":""}" cx="${x}" cy="${y}" r="22"/><text class="${on?"on":""}" x="${x}" y="${y+5}" text-anchor="middle" font-size="14">E${i}</text>`;
+    if(row && row.pend+row.sin>0 && row.marcada) s += `<circle class="pend" cx="${x+18}" cy="${y-18}" r="9"/><text class="pendn" x="${x+18}" y="${y-14}" text-anchor="middle">${row.pend+row.sin}</text>`;
+  }
+  return s+'</svg>';
+}
+function lbl(e){ return etapaNombre(e); }
+function vMapa(){
+  const an = analizar(), c = S.caso;
+  const cert = (CERTEZAS.find(x=>x[0]===c.certeza)||[])[1]||"";
+  const nl = t => esc(t||"—");
+  let h = `<div><h2 id="h-mapa">Mapa de lagunas</h2></div>
+  <div class="decl"><b>Léase primero.</b>
+    <span>Este informe es de nivel B: una ficha con validaciones codificadas. No es de nivel C, y nada de lo que contiene está verificado en Lean.</span>
+    <span>Verificado no es auditado: Lean comprueba que los modelos son consistentes; las respuestas de esta ficha son interpretación de quien las dio.</span>
+    <span>No es un juicio sobre la calidad ni la ortodoxia del texto. No hay nota, ranking ni puntuación: solo lo investigado, lo pendiente y lo que no aplica.</span>
+    ${S.ejemplo?'<b>CASO DE EJEMPLO con datos inventados.</b>':""}
+  </div>
+  <section><h3>Ficha</h3><dl>
+    <dt>Título</dt><dd>${nl(c.titulo)}</dd><dt>Autoría</dt><dd>${nl(c.autoria)}</dd><dt>Fecha</dt><dd>${nl(c.fecha)}</dd>
+    <dt>Etapa del trabajo</dt><dd>${c.etapa?esc(lbl(c.etapa)):"—"}</dd><dt>Certeza declarada</dt><dd>${esc(cert)}</dd>
+    <dt>Tema</dt><dd>${nl(c.tema)}</dd><dt>Horizonte declarado</dt><dd>${nl(c.horizonte_declarado)}</dd><dt>Supuestos</dt><dd>${nl(c.supuestos)}</dd>
+    <dt>Versiones</dt><dd>esquema ${esc(VERS.esquema)} · sitio ${esc(VERS.sitio)} · repositorio ${esc(VERS.repositorio)} · Lean ${esc(VERS.lean)} · DOI ${esc(VERS.doi)} · banco de preguntas ${esc(VERS.banco_preguntas)}</dd>
+  </dl></section>
+  <section><h3>1. Estructura: etapas presentes</h3>${grafoSvg(an)}
+    <div class="legend"><span>Nodo coloreado: etapa presente en la ficha</span><span>Número naranja: preguntas pendientes o sin responder</span><span>Línea gruesa: la ligadura une dos etapas presentes</span></div>
+    <p class="hint">Las flechas dicen «A influye en B». Son permisos del modelo, no flujos obligatorios. E0 queda fuera del grafo del modelo conjunto.</p></section>
+  <section><h3>2. Especializaciones y estado de sus preguntas</h3><div class="tablewrap"><table>
+    <thead><tr><th>Etapa</th><th>Presente</th><th class="n">Preguntas</th><th class="n">Investigado</th><th class="n">Pendiente</th><th class="n">No aplica</th><th class="n">Sin responder</th><th class="n">Seg. función</th><th class="n">Seg. tratam.</th></tr></thead><tbody>`;
+  an.tabla.forEach(r => { h += `<tr class="${r.efectiva?"":"off"}"><td>${esc(r.e+" "+r.nombre)}</td><td>${r.efectiva?"sí":"no"}</td><td class="n">${r.total}</td><td class="n">${r.inv}</td><td class="n">${r.pend}</td><td class="n">${r.noap}</td><td class="n">${r.sin}</td><td class="n">${r.segF}</td><td class="n">${r.segT}</td></tr>`; });
+  h += `<tr><td>Entre etapas</td><td>—</td><td class="n">${an.cruz.n}</td><td class="n">${an.cruz.inv}</td><td class="n">${an.cruz.pend}</td><td class="n">${an.cruz.noap}</td><td class="n">${an.cruz.sin}</td><td class="n">—</td><td class="n">—</td></tr></tbody></table></div></section>
+  <section><h3>3. Discontinuidades</h3>
+    <p class="hint">Informativo. Un caso puede no recorrer todas las etapas; esto solo muestra qué ligaduras del modelo quedan sin cubrir.</p>
+    ${an.lig.length?"<ul>"+an.lig.map(x=>"<li>"+esc(x)+"</li>").join("")+"</ul>":"<p>Ninguna: todas las ligaduras de las etapas presentes llegan a otra etapa presente, o no hay etapas marcadas.</p>"}</section>
+  <section><h3>4. Lagunas, con la pregunta crítica</h3>
+    ${an.lagunas.length?"<ul>"+an.lagunas.map(l=>`<li><span class="tag ${l.q.etiqueta}">${l.q.etiqueta}</span> <b>${esc(l.q.id)}</b> · ${l.estado==="pendiente"?"Pendiente":"Sin responder"}. ${esc(l.q.texto)}${l.nota?" <i>Nota: "+esc(l.nota)+"</i>":""}</li>`).join("")+"</ul>":"<p>No hay preguntas pendientes ni sin responder en las etapas marcadas.</p>"}
+    ${c.pendientes_manuales.trim()?"<h3 style='margin-top:6px'>Pendientes propios</h3><ul>"+c.pendientes_manuales.split("\n").filter(x=>x.trim()).map(x=>"<li>"+esc(x)+"</li>").join("")+"</ul>":""}</section>
+  <section><h3>5. Avisos de validación</h3>
+    ${an.avisos.length?an.avisos.map(a=>`<div class="aviso"><span><code>${esc(a.id)}</code> ${esc(a.msg)}</span></div>`).join(""):"<p>Sin avisos.</p>"}
+    <p class="hint">Los avisos son reglas simples del cuestionario. No son una nota.</p></section>`;
+  h += `<section><h3>6. Procedencia de las etiquetas</h3><div class="tablewrap"><table><thead><tr><th>Procedencia</th><th class="n">Etiquetas</th></tr></thead><tbody>${PROCS.map(k=>`<tr><td>${esc(PROC_TXT[k])}</td><td class="n">${an.proc[k]}</td></tr>`).join("")}</tbody></table></div><p class="hint">Cuenta las respuestas con estado y las dos etiquetas de cada segmento. Esta versión del sitio no usa IA: todo lo que aparece es de una persona.</p></section>`;
+  if(S.segs.length){
+    h += `<section><h3>7. Segmentos</h3><div class="tablewrap"><table><thead><tr><th>Id</th><th>Referencia</th><th>Función en el autor</th><th>Tratamiento</th><th>Extracto</th></tr></thead><tbody>${S.segs.map(s=>`<tr><td>${esc(s.id)}</td><td>${nl(s.referencia)}</td><td>${s.funcion_autor?esc(s.funcion_autor==="otra"?"Otra":lbl(s.funcion_autor)):"—"}</td><td>${s.tratamiento?esc(s.tratamiento==="ninguno"?"Ninguno":lbl(s.tratamiento)):"—"}</td><td>${nl(s.extracto)}</td></tr>`).join("")}</tbody></table></div></section>`;
+  }
+  h += '<div class="exp no-print"><button class="btn" type="button" data-go="ruta-a">Volver a las preguntas</button><button class="btn primary" type="button" data-go="exportar">Exportar</button></div>';
+  return h;
+}
+
+/* exportes */
+function fichaJson(){
+  const an = analizar(), c = S.caso;
+  const resp = {};
+  Object.keys(S.resp).forEach(k => { const r = S.resp[k]; if(r && r.estado) resp[k] = {estado:r.estado, nota:r.nota||"", procedencia:PROCS.includes(r.procedencia)?r.procedencia:"humano"}; });
+  const ruta = (S.etapas.length||Object.keys(resp).length) && S.segs.length ? "A+B" : (S.segs.length ? "B" : "A");
+  const pend = an.lagunas.filter(l=>l.estado==="pendiente").map(l=>l.q.id+" "+l.q.texto).concat(c.pendientes_manuales.split("\n").map(x=>x.trim()).filter(Boolean));
+  return {esquema:VERS.esquema, ejemplo:S.ejemplo, exportada:new Date().toISOString(), versiones:VERS, nivel_afirmacion:"B",
+    caso:{titulo:c.titulo, autoria:c.autoria, fecha:c.fecha, ruta, etapa:c.etapa, certeza:c.certeza, tema:c.tema, horizonte_declarado:c.horizonte_declarado, supuestos:c.supuestos,
+      pendientes_manuales:c.pendientes_manuales.split("\n").map(x=>x.trim()).filter(Boolean), sin_datos_personales:!!c.sin_datos_personales},
+    etapas_involucradas:S.etapas.slice(), respuestas:resp, segmentos:S.segs.map(s=>({id:s.id,referencia:s.referencia,extracto:s.extracto,funcion_autor:s.funcion_autor,procedencia_funcion:PROCS.includes(s.procedencia_funcion)?s.procedencia_funcion:"humano",tratamiento:s.tratamiento,procedencia_tratamiento:PROCS.includes(s.procedencia_tratamiento)?s.procedencia_tratamiento:"humano",nota:s.nota})),
+    pendientes:pend, avisos:an.avisos.map(a=>({id:a.id,mensaje:a.msg}))};
+}
+function fichaMd(){
+  const an = analizar(), c = S.caso, cert=(CERTEZAS.find(x=>x[0]===c.certeza)||[])[1]||"";
+  const L = [];
+  L.push("# Informe de ficha de caso: "+(c.titulo||"(sin título)"),"");
+  if(S.ejemplo) L.push("**CASO DE EJEMPLO con datos inventados.**","");
+  L.push("> **Léase primero.** Este informe es de nivel B (ficha con validaciones codificadas). No es de nivel C: nada de lo que contiene está verificado en Lean.","> Verificado no es auditado: Lean comprueba que los modelos son consistentes; las respuestas de esta ficha son interpretación de quien las dio.","> No es un juicio sobre la calidad ni la ortodoxia del texto. No hay nota, ranking ni puntuación.","");
+  L.push("## Ficha","");
+  L.push("- Autoría: "+(c.autoria||"—"),"- Fecha: "+(c.fecha||"—"),"- Etapa del trabajo: "+(c.etapa?lbl(c.etapa):"—"),"- Certeza declarada: "+cert,"- Tema: "+(c.tema||"—"),"- Horizonte declarado: "+(c.horizonte_declarado||"—"),"- Supuestos: "+(c.supuestos||"—"));
+  L.push("- Versiones: esquema "+VERS.esquema+" · sitio "+VERS.sitio+" · repositorio "+VERS.repositorio+" · Lean "+VERS.lean+" · DOI "+VERS.doi+" · banco de preguntas "+VERS.banco_preguntas,"");
+  L.push("## Especializaciones y estado de sus preguntas","","| Etapa | Presente | Preguntas | Investigado | Pendiente | No aplica | Sin responder | Seg. (función) | Seg. (tratamiento) |","|---|---|---|---|---|---|---|---|---|");
+  an.tabla.forEach(r => L.push("| "+r.e+" "+r.nombre+" | "+(r.efectiva?"sí":"no")+" | "+r.total+" | "+r.inv+" | "+r.pend+" | "+r.noap+" | "+r.sin+" | "+r.segF+" | "+r.segT+" |"));
+  L.push("| Entre etapas | — | "+an.cruz.n+" | "+an.cruz.inv+" | "+an.cruz.pend+" | "+an.cruz.noap+" | "+an.cruz.sin+" | — | — |","");
+  L.push("## Discontinuidades","","Informativo: un caso puede no recorrer todas las etapas.","");
+  if(an.lig.length) an.lig.forEach(x=>L.push("- "+x)); else L.push("- Ninguna.");
+  L.push("","## Lagunas, con la pregunta crítica","");
+  if(an.lagunas.length) an.lagunas.forEach(l=>L.push("- ["+l.q.etiqueta+"] **"+l.q.id+"** ("+(l.estado==="pendiente"?"pendiente":"sin responder")+"): "+l.q.texto+(l.nota?" _Nota: "+l.nota+"_":""))); else L.push("- Ninguna.");
+  const pm = c.pendientes_manuales.split("\n").map(x=>x.trim()).filter(Boolean);
+  if(pm.length){ L.push("","### Pendientes propios",""); pm.forEach(x=>L.push("- "+x)); }
+  L.push("","## Avisos de validación","");
+  if(an.avisos.length) an.avisos.forEach(a=>L.push("- `"+a.id+"` "+a.msg)); else L.push("- Sin avisos.");
+  L.push("","## Procedencia de las etiquetas","","| Procedencia | Etiquetas |","|---|---|");
+  PROCS.forEach(k=>L.push("| "+PROC_TXT[k]+" | "+an.proc[k]+" |"));
+  if(S.segs.length){
+    L.push("","## Segmentos","","| Id | Referencia | Función en el autor | Tratamiento | Extracto |","|---|---|---|---|---|");
+    const cel = t => String(t||"—").replace(/\|/g,"\\|").replace(/\n/g," ");
+    S.segs.forEach(s=>L.push("| "+cel(s.id)+" | "+cel(s.referencia)+" | "+cel(s.funcion_autor)+" | "+cel(s.tratamiento)+" | "+cel(s.extracto)+" |"));
+  }
+  L.push("","---","Generado con la ficha de caso E0–E8 (© 2026 Miguel Ángel Vega Ochoa; todos los derechos reservados, con permiso académico). DOI del repositorio: https://doi.org/"+VERS.doi,"");
+  return L.join("\n");
+}
+function slug(t){ return (t||"ficha").normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"").slice(0,40)||"ficha"; }
+function vExportar(){
+  return `<div><h2 id="h-exportar">Exportar</h2>
+  <p class="lead">Para conservar el caso, descargue el JSON: es lo único que permite volver a cargarlo en otro navegador. El Markdown es el informe para leer o pegar en un documento. Para PDF, use «Imprimir» y elija guardar como PDF.</p></div>
+  <div class="card"><div class="exp">
+    <button class="btn primary" type="button" data-exp="json">Descargar JSON</button>
+    <button class="btn" type="button" data-exp="md">Descargar informe Markdown</button>
+    <button class="btn" type="button" id="btn-print">Imprimir o guardar PDF</button>
+  </div><p class="msg" id="msg-exp" role="status"></p></div>
+  <div class="card"><h3>Texto de la exportación</h3>
+    <p class="hint">Si la descarga no funciona en su navegador, copie el texto de aquí.</p>
+    <div class="exp" style="margin:10px 0"><button class="btn small" type="button" data-copy="json">Copiar JSON</button><button class="btn small" type="button" data-copy="md">Copiar Markdown</button></div>
+    <label class="f"><span class="sr">Vista previa</span><textarea class="out" id="out" readonly></textarea></label>
+    <div class="exp" style="margin-top:8px"><button class="btn small" type="button" data-prev="json">Ver JSON</button><button class="btn small" type="button" data-prev="md">Ver Markdown</button></div>
+  </div>
+  <div class="card"><h3>Cargar un JSON guardado</h3>
+    <label class="f"><span>Archivo de ficha (.json)</span><input type="file" id="inp-json" accept="application/json,.json"></label>
+    <p class="msg" id="msg-imp" role="status"></p></div>
+  <div class="card"><h3>Borrar los datos de este navegador</h3>
+    <p class="hint">Quita la ficha guardada en este navegador. No afecta los archivos que ya exportó.</p>
+    <div class="exp" style="margin-top:10px"><button class="btn danger" type="button" id="btn-borrar">Borrar y empezar en blanco</button></div></div>`;
+}
+
+/* ---------- control ---------- */
+let pasoActual = "ficha";
+function renderNav(an){
+  an = an || analizar();
+  const badge = {"ficha":"", "ruta-a": S.etapas.length? S.etapas.length+" etapas":"", "ruta-b": S.segs.length? S.segs.length+" seg.":"", "mapa": an.lagunas.length? an.lagunas.length+" lagunas":"", "exportar":""};
+  document.getElementById("nav").innerHTML = PASOS.map(([id,t],i)=>`<a href="#${id}" data-paso="${id}"${id===pasoActual?' aria-current="page"':""}><span>${i+1}. ${esc(t)}</span><span class="badge">${esc(badge[id])}</span></a>`).join("");
+}
+const VISTAS = {"ficha":vFicha,"ruta-a":vRutaA,"ruta-b":vRutaB,"mapa":vMapa,"exportar":vExportar};
+function renderPaso(id, conservarFoco){
+  pasoActual = VISTAS[id] ? id : "ficha";
+  PASOS.forEach(([p]) => { document.getElementById("p-"+p).classList.toggle("on", p===pasoActual); });
+  const sec = document.getElementById("p-"+pasoActual);
+  sec.innerHTML = VISTAS[pasoActual]();
+  if(pasoActual==="exportar") prev("md");
+  renderNav();
+  document.getElementById("banner-ejemplo").hidden = !S.ejemplo;
+  if(!conservarFoco) window.scrollTo(0,0);
+}
+function ir(id){ if(location.hash !== "#"+id) location.hash = id; else renderPaso(id); }
+window.addEventListener("hashchange", () => renderPaso(location.hash.slice(1)));
+function prev(t){ const o = document.getElementById("out"); if(o) o.value = t==="json" ? JSON.stringify(fichaJson(),null,2) : fichaMd(); }
+function textoExp(t){ return t==="json" ? JSON.stringify(fichaJson(),null,2) : fichaMd(); }
+function msg(id,t){ const m = document.getElementById(id); if(m) m.textContent = t; }
+function descargar(t){
+  const txt = textoExp(t), nombre = "ficha-"+slug(S.caso.titulo)+"-"+hoy()+(t==="json"?".json":".md");
+  try{
+    const b = new Blob([txt],{type:t==="json"?"application/json":"text/markdown"}), u = URL.createObjectURL(b), a = document.createElement("a");
+    a.href = u; a.download = nombre; document.body.appendChild(a); a.click(); a.remove(); setTimeout(()=>URL.revokeObjectURL(u),2000);
+    msg("msg-exp","Se pidió la descarga de "+nombre+". Si no aparece, use «Copiar» más abajo.");
+  }catch(e){ msg("msg-exp","No se pudo descargar. Use «Copiar» más abajo."); }
+}
+function copiar(t){
+  const txt = textoExp(t);
+  const fallback = () => { prev(t); const o = document.getElementById("out"); if(o){ o.focus(); o.select(); } msg("msg-exp","Seleccioné el texto en el cuadro. Copie con Ctrl+C o con el menú del navegador."); };
+  try{ navigator.clipboard.writeText(txt).then(()=>msg("msg-exp","Copiado."),fallback); }catch(e){ fallback(); }
+}
+function importar(file){
+  const r = new FileReader();
+  r.onload = () => {
+    try{
+      const o = JSON.parse(r.result);
+      if(!o || !["ficha-caso/0.1.0","ficha-caso/0.2.0"].includes(o.esquema) || !o.caso) throw new Error("El archivo no es una ficha con esquema ficha-caso/0.1.0 ni 0.2.0.");
+      const n = casoVacio(), c = o.caso, ign = [];
+      ["titulo","autoria","fecha","etapa","certeza","tema","horizonte_declarado","supuestos"].forEach(k => { if(typeof c[k]==="string") n.caso[k]=c[k]; });
+      n.caso.pendientes_manuales = Array.isArray(c.pendientes_manuales) ? c.pendientes_manuales.join("\n") : "";
+      n.caso.sin_datos_personales = !!c.sin_datos_personales;
+      n.ejemplo = !!o.ejemplo;
+      n.etapas = (o.etapas_involucradas||[]).filter(e => BANCO.etapas.some(x=>x.id===e));
+      Object.keys(o.respuestas||{}).forEach(k => { const x = o.respuestas[k]; if(qById(k) && x && ["investigado","pendiente","no_aplica"].includes(x.estado)) n.resp[k] = {estado:x.estado,nota:String(x.nota||""),procedencia:PROCS.includes(x.procedencia)?x.procedencia:"humano"}; else ign.push(k); });
+      n.segs = (o.segmentos||[]).map((s,i)=>({id:String(s.id||"S"+(i+1)),referencia:String(s.referencia||""),extracto:String(s.extracto||""),funcion_autor:String(s.funcion_autor||""),procedencia_funcion:PROCS.includes(s.procedencia_funcion)?s.procedencia_funcion:"humano",tratamiento:String(s.tratamiento||""),procedencia_tratamiento:PROCS.includes(s.procedencia_tratamiento)?s.procedencia_tratamiento:"humano",nota:String(s.nota||"")}));
+      S = n; guardar(); renderPaso("exportar", true);
+      msg("msg-imp","Ficha cargada."+(ign.length?" Se ignoraron preguntas que este banco no tiene: "+ign.join(", ")+".":"")+(o.versiones && o.versiones.banco_preguntas!==VERS.banco_preguntas?" Aviso: la ficha se hizo con el banco "+o.versiones.banco_preguntas+" y este sitio trae "+VERS.banco_preguntas+".":""));
+    }catch(e){ msg("msg-imp","No se pudo cargar: "+e.message); }
+  };
+  r.readAsText(file);
+}
+document.addEventListener("input", ev => {
+  const t = ev.target;
+  if(t.dataset.f){ S.caso[t.dataset.f] = t.value; }
+  else if(t.dataset.seg !== undefined && t.dataset.k){ S.segs[+t.dataset.seg][t.dataset.k] = t.value; if(t.tagName==="SELECT") renderNav(); }
+  else if(t.dataset.q && t.dataset.k==="nota"){ (S.resp[t.dataset.q] = S.resp[t.dataset.q] || {})["nota"] = t.value; }
+  else return;
+  guardar(); renderNav();
+});
+document.addEventListener("change", ev => {
+  const t = ev.target;
+  if(t.dataset.fc){ S.caso[t.dataset.fc] = t.checked; guardar(); return; }
+  if(t.dataset.etapa){ const e = t.dataset.etapa; S.etapas = BANCO.etapas.map(x=>x.id).filter(id => id===e ? t.checked : S.etapas.includes(id)); guardar(); renderPaso("ruta-a", true); const el = document.querySelector('[data-etapa="'+e+'"]'); if(el) el.focus(); return; }
+  if(t.dataset.q && t.dataset.k==="estado"){ (S.resp[t.dataset.q] = S.resp[t.dataset.q] || {}).estado = t.value; guardar(); renderNav(); return; }
+  if(t.id==="inp-json" && t.files[0]) importar(t.files[0]);
+  if(t.id==="inp-texto" && t.files[0]) cargarArchivoTexto(t.files[0]);
+});
+document.addEventListener("click", ev => {
+  const b = ev.target.closest("button, a"); if(!b) return;
+  if(b.dataset.go){ ir(b.dataset.go); }
+  else if(b.dataset.paso){ ev.preventDefault(); ir(b.dataset.paso); }
+  else if(b.dataset.clear){ const k=b.dataset.clear; if(S.resp[k]){ delete S.resp[k].estado; } guardar(); renderPaso("ruta-a", true); const el=document.getElementById("q-"+k); if(el) el.scrollIntoView({block:"nearest"}); }
+  else if(b.id==="btn-partir"){ const v = document.getElementById("txt-pegado").value; if(v.trim()) prepararSubida("texto pegado", v); else subida = {error:"Pegue primero el texto."}; mostrarSubida(); }
+  else if(b.id==="btn-crear-segs"){ crearSegmentos(false); }
+  else if(b.id==="btn-reemp-segs"){ crearSegmentos(true); }
+  else if(b.id==="btn-desc-subida"){ subida = null; mostrarSubida(); }
+  else if(b.id==="btn-addseg"){ const n = S.segs.length+1; S.segs.push({id:"S"+n,referencia:"",extracto:"",funcion_autor:"",tratamiento:"",nota:""}); guardar(); renderPaso("ruta-b", true); const el = document.getElementById("s"+(n-1)+"-ref"); if(el) el.focus(); }
+  else if(b.dataset.delseg!==undefined){ S.segs.splice(+b.dataset.delseg,1); S.segs.forEach((s,i)=>{ s.id = "S"+(i+1); }); guardar(); renderPaso("ruta-b", true); }
+  else if(b.dataset.exp){ descargar(b.dataset.exp); }
+  else if(b.dataset.copy){ copiar(b.dataset.copy); }
+  else if(b.dataset.prev){ prev(b.dataset.prev); }
+  else if(b.id==="btn-print"){ try{ window.print(); }catch(e){} msg("msg-exp","Si no se abrió la ventana de impresión, descargue el informe en Markdown."); }
+  else if(b.id==="btn-blanco"){ S = casoVacio(); guardar(); renderPaso("ficha"); location.hash = "ficha"; }
+  else if(b.id==="btn-borrar"){ try{ localStorage.removeItem(KEY); }catch(e){} S = casoVacio(); renderPaso("ficha"); location.hash = "ficha"; document.getElementById("chip-save").textContent = "Sin guardar"; }
+  else if(b.id==="btn-tema"){ const r = document.documentElement, oscuro = r.getAttribute("data-theme")==="dark" || (!r.getAttribute("data-theme") && matchMedia("(prefers-color-scheme: dark)").matches); r.setAttribute("data-theme", oscuro?"light":"dark"); try{ localStorage.setItem(KEY+"-tema", oscuro?"light":"dark"); }catch(e){} }
+});
+try{ const th = localStorage.getItem(KEY+"-tema"); if(th) document.documentElement.setAttribute("data-theme", th); }catch(e){}
+document.getElementById("chip-ver").textContent = "esquema "+VERS.esquema.split("/")[1]+" · repo "+VERS.repositorio+" · Lean 4.22.0";
+const doiEl = document.getElementById("lnk-doi"); doiEl.textContent = VERS.doi; doiEl.href = "https://doi.org/"+VERS.doi;
+renderPaso(location.hash.slice(1)||"ficha", true);
+</script>
+</body>
+</html>
