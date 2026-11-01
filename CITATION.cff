@@ -1,11 +1,13 @@
 cff-version: 1.2.0
-message: "Si usa este trabajo, cítelo así."
+message: "Si usa este trabajo, cítelo así. Este archivo y su licencia se refieren a la versión v0.1.0 (DOI 10.5281/zenodo.23697821); el material posterior se rige por LICENCIA-POSTERIOR-A-v0.1.0.md."
 title: "Estructuralismo teológico: modelación en Lean 4 de las especializaciones funcionales de Lonergan"
 type: software
 authors:
   - family-names: "Vega Ochoa"
     given-names: "Miguel Angel"
     orcid: "https://orcid.org/0009-0006-3898-8757"
+# La licencia de abajo (Apache-2.0) describe solo la versión v0.1.0 (version, date-released y doi de este archivo).
+# Lo añadido después de v0.1.0 tiene todos los derechos reservados, con permiso académico: ver LICENCIA-POSTERIOR-A-v0.1.0.md y LICENCIAS.md.
 license: Apache-2.0
 repository-code: "https://github.com/MiguelE1-E8/estructuralismo-teologico"
 version: 0.1.0
